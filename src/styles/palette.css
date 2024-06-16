@@ -1,0 +1,15 @@
+:root{
+    --primary: #a00303;
+    --secondary: #c60303;
+    --black: #1f1f1f;
+    --white: #e7e7e7;
+    --gray: rgba(38, 38, 38, 0.078);
+}
+
+.primary{
+    color: var(--primary);
+}
+
+.secondary{
+    color: var(--secondary);
+}

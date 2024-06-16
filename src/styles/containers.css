@@ -1,0 +1,124 @@
+/* App: contains view container */
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* App: contains stage container */
+.view-container{
+    margin: 0;
+    background-color: var(--black);
+    max-width: 860px;
+}
+
+/* Stages: contains all stage views*/
+.stage-container{
+    display: flex;
+    flex-direction: column;
+}
+
+/* Contains notifications */
+.notification-bar{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    background-color: var(--black);
+    color: var(--white);
+}
+
+/* Contains heading footer for stages */
+.heading-footer{
+    position: absolute;
+    bottom: 0px;
+    right: 20px;
+    width: 20px;
+    background-color: var(--black);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 20px 0px 20px;
+    border: 1px solid var(--secondary);
+    cursor: pointer;
+    overflow: hidden;
+
+    &:hover{
+        height: 300px;
+    }
+}
+
+/* AwaitingPlayers */
+.critics-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+/* Table: public games */
+table{
+    border-collapse: separate; 
+    border-spacing: 0 1em;
+}
+
+td{
+    vertical-align: top;
+}
+
+.title-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+
+.search-results{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.movie-card{
+    width: 150px;
+    cursor: pointer;
+    border: 1px solid var(--black);
+
+    &:hover{
+        border: 1px solid red;
+    }
+}
+
+.movie-vote-container{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.chat-window{
+    display: block;
+    height: 150px !important;
+    border: 1px solid var(--secondary) !important;
+    padding: 5px;
+    margin-bottom: 5px;
+    overflow-y: scroll;
+}
+
+.public-game{
+    width: 100%;
+    padding: 0 5px 0px 5px;
+    border: 1px solid var(--primary);
+    margin-bottom: 5px;
+    cursor: pointer;
+
+    &:hover{
+        border: 1px solid var(--secondary);
+    }
+}
+
+.public-game-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}

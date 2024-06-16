@@ -1,0 +1,23 @@
+@import url('./palette.css');
+@import url('./typography.css');
+@import url('./buttons.css');
+@import url('./inputs.css');
+@import url('./containers.css');
+@import url('./scrollbar.css');
+@import url('./loading.css');
+@import url('range.css');
+
+body{
+    color: var(--white);
+    margin-top: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    padding: 0;
+    height: 100%;
+    background-color: var(--black);
+}
+
+img{
+    width: 100%;
+}
