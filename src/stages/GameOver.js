@@ -27,15 +27,15 @@ function GameOver({ room, setStage }){
                  
            <br /><br /> 
            <br /><br />
-            <h3 className='primary'>Winner</h3>
-            <h1>{winner.name}</h1>
+            <h3>Winner</h3>
+            <h1 className='secondary'>{winner.name}</h1>
             <br /><br />
             <button onClick={() => {
                     setStage('splash')
                 }}>Home</button>
            <br /><br /><br /><br />
                 <h3 className='secondary'>Scoreboard</h3>
-            <table style={{width: '100%', borderSpacing: '5px'}}>
+            <table style={{width: '100%'}}>
                 <tbody>
                 {room.players.map(player => {
                     return (
