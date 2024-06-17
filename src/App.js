@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 
-//components
+// components
 import Loading from './components/Loading';
 
-//stages
+// stages
 import Splash from './stages/Splash';
 import AwaitPlayers from './stages/AwaitPlayers';
 import AssignMovie from './stages/AssignMovie';
@@ -14,7 +14,7 @@ import RoundOver from './stages/RoundOver';
 import AssignDealer from './stages/AssignDealer';
 import GameOver from './stages/GameOver';
 
-//socket
+// socket
 const SOCKET_SERVER = process.env.REACT_APP_SOCKET_SERVER;
 const socket = io.connect(SOCKET_SERVER);
 
@@ -26,36 +26,42 @@ const App = () => {
   const [room, setRoom] = useState();
   const [publicRooms, setPublicRooms] = useState([])
 
-  //socket listen
+  console.log('app created');
+
+  // socket listen
   useEffect(() => {
-      //on connection retrieve id
+
+      console.log('socket updated', socket);
+
+      // on connection retrieve id
       socket.on('entry', (data) => {
+        console.log('entry');
         setEntry(data);
         setLoading(false);
       });
 
-      //notifications
+      // notifications
       socket.on('notification', (data) => {
         setNotification(data.message)
       });
 
-      //stage update
+      // update stage
       socket.on('update_stage', (data) => {
         setStage(data.stage);
       });
 
-      //update room
+      // update room
       socket.on('update_room', (data) => {
         setRoom(data);
       });
 
-      //update public rooms
+      // update public rooms
       socket.on('update_public_rooms', (data) => {
         setPublicRooms(data);
       });
   }, [socket])
 
-  //notification timeout
+  // notification timeout
   useEffect(() => {
     if(notification){
       setTimeout(() => {

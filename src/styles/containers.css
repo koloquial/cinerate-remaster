@@ -52,7 +52,6 @@
 .chat{
     position: fixed;
     bottom: 1px;
-    width: 100%;
     background-color: var(--primary);
     border: 1px solid var(--primary);
     height: 40px;
@@ -60,7 +59,7 @@
     transition: .5s;
     padding: 10px 0px 0px 10px;
     border-radius: 5px;
-    width: 150px;
+    width: 100px;
 
     &:hover{
         padding: 10px 10px 0px 10px;

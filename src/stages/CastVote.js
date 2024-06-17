@@ -58,18 +58,17 @@ function CastVote({ socket, room, setStage, setNotification }){
             </div>                
 
             <div>
-            <img 
-                src={poster} 
-                style={{
-                    maxWidth: '240px', 
-                    maxHeight: '360px',
-                    marginRight: '25px'
-                }} 
-            />
-            <br /><br />
+                <img 
+                    src={poster} 
+                    style={{
+                        maxWidth: '200px', 
+                        maxHeight: '300px',
+                        marginRight: '15px'
+                    }} 
+                />
+                <br /><br />
             </div>
             
-                
             <div style={{width: '170px'}}>
                 <h3>{room.critMovie.Title}</h3>
                 <p>
