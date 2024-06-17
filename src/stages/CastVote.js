@@ -57,18 +57,19 @@ function CastVote({ socket, room, setStage, setNotification }){
                 <p>{time}s</p>
             </div>                
 
-            <div>
-                <center>
+            <div style={{textAlign: 'center'}}>
                     <h3>{room.critMovie.Title}</h3>
                     <p>
                         ({room.critMovie.Year})
                     </p>
+
                     <img 
                         src={poster} 
                         style={{
-                            maxWidth: '150px', 
-                            maxHeight: '225px',
-                            marginRight: '15px'
+                            maxWidth: '240px', 
+                            maxHeight: '360px',
+                            marginRight: '15px',
+                            marginBottom: '10px'
                         }} 
                     />
                     <h3>Rating</h3>
@@ -84,11 +85,8 @@ function CastVote({ socket, room, setStage, setNotification }){
                     <button onClick={() => cast()}>
                         Submit Rating
                     </button>  
-                </center>
             </div>
             
-           
-        
             <div className='movie-info'>
                 <div>
                     <h4>Director</h4>
