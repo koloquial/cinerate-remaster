@@ -59,7 +59,7 @@
     transition: .5s;
     padding: 10px 0px 0px 10px;
     border-radius: 5px;
-    width: 70px;
+    width: 60px;
 
     &:hover{
         padding: 10px 10px 0px 10px;

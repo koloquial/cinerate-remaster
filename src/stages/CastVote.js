@@ -58,47 +58,33 @@ function CastVote({ socket, room, setStage, setNotification }){
             </div>                
 
             <div>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <img 
-                                    src={poster} 
-                                    style={{
-                                        maxWidth: '150px', 
-                                        maxHeight: '225px',
-                                        marginRight: '15px'
-                                    }} 
-                                />
-                            </td>
-                            <td>
-                                <div>
-                                    <h3>{room.critMovie.Title}</h3>
-                                    <p>
-                                        ({room.critMovie.Year})
-                                    </p>
-                                    <br /><br />
-                                    <center>
-                                        <h3>Rating</h3>
-                                        <h3 className='secondary'>{castVote}</h3>
-                                        <input 
-                                            type='range' 
-                                            min='0' 
-                                            max='10' 
-                                            step='.1' 
-                                            value={castVote} 
-                                            onChange={handleCastVote} 
-                                        />
-                                        <button onClick={() => cast()}>
-                                            Submit Rating
-                                        </button>  
-                                    </center>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <br /><br />
+                <center>
+                    <h3>{room.critMovie.Title}</h3>
+                    <p>
+                        ({room.critMovie.Year})
+                    </p>
+                    <img 
+                        src={poster} 
+                        style={{
+                            maxWidth: '150px', 
+                            maxHeight: '225px',
+                            marginRight: '15px'
+                        }} 
+                    />
+                    <h3>Rating</h3>
+                    <h3 className='secondary'>{castVote}</h3>
+                    <input 
+                        type='range' 
+                        min='0' 
+                        max='10' 
+                        step='.1' 
+                        value={castVote} 
+                        onChange={handleCastVote} 
+                    />
+                    <button onClick={() => cast()}>
+                        Submit Rating
+                    </button>  
+                </center>
             </div>
             
            
