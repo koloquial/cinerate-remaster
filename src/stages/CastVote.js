@@ -69,7 +69,7 @@ function CastVote({ socket, room, setStage, setNotification }){
                 <br /><br />
             </div>
             
-            <div style={{width: '170px'}}>
+            <div style={{width: '150px'}}>
                 <h3>{room.critMovie.Title}</h3>
                 <p>
                     ({room.critMovie.Year})
@@ -119,6 +119,15 @@ function CastVote({ socket, room, setStage, setNotification }){
                         <h4>Box Office</h4>
                         <p>
                             {room.critMovie.BoxOffice}
+                        </p>
+                    </div> 
+                : <></>}
+
+                {room.critMovie.Plot ? 
+                    <div>
+                        <h4>Box Office</h4>
+                        <p>
+                            {room.critMovie.Plot}
                         </p>
                     </div> 
                 : <></>}
