@@ -4,6 +4,10 @@ h1, h2, h3, h4, h5, p, button, input, td {
     font-style: normal;
 }
 
+h1, h2, h3, h4, h5, p {
+    cursor: default;
+}
+
 .title{
     font-family: 'Monoton', sans-serif;
     font-weight: 400;

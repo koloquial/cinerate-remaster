@@ -59,7 +59,7 @@
     transition: .5s;
     padding: 10px 0px 0px 10px;
     border-radius: 5px;
-    width: 80px;
+    width: 70px;
 
     &:hover{
         padding: 10px 10px 0px 10px;
@@ -92,7 +92,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 5px;
 }
 
 .movie-card{
