@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
 
+//functions
+import { confetti } from '../functions/confetti';
+
 function GameOver({ room, setStage }){
     const [winner, setWinner] = useState('');
     console.log('room', room)
@@ -23,27 +26,38 @@ function GameOver({ room, setStage }){
 
     return (
         <div className='view-container'>
-            <center>
-                 
-           <br /><br /> 
-           <br /><br />
-            <h3>Winner</h3>
-            <h1 className='secondary'>{winner.name}</h1>
+            <div className='confetti-container'>
+                <div className='confetti'></div>
+                <div className='confetti'></div>
+                <div className='confetti'></div>
+                <div className='confetti'></div>
+                <div className='confetti'></div>
+                <div className='confetti'></div>
+                <div className='confetti'></div>
+                <div className='confetti'></div>
+                <div className='confetti'></div>
+                <div className='confetti'></div>
+            </div>
             <br /><br />
-            <button onClick={() => {
-                    setStage('splash')
-                }}>Home</button>
-           <br /><br /><br /><br />
-                <h3 className='secondary'>Scoreboard</h3>
-            <table style={{width: '100%'}}>
+            
+            <div style={{border: '5px double red', borderRadius: '5px', padding: '10px', width: '100%'}}> 
+                <center>
+                <h3>Winner</h3>
+                <h1 style={{color: 'gold'}}>{winner.name}</h1>
+                <br /><br />
+                </center>
+            
+
+            <h4>Scoreboard</h4>
+            <table>
                 <tbody>
                 {room.players.map(player => {
                     return (
                         <tr>
-                            <td style={{padding: '0px 10px 0px 0px'}}>
+                            <td>
                                 <p>{player.name}</p>
                             </td>
-                            <td style={{textAlign: 'right'}}>
+                            <td>
                                 <p>{player.score}</p>
                             </td>
                         </tr>
@@ -51,7 +65,11 @@ function GameOver({ room, setStage }){
                     })}
                 </tbody>
             </table>
-            </center>
+            <br /><br />
+            <button onClick={() => {
+                    setStage('splash')
+                }}>Home</button>
+                </div>
         </div>
     )
 }

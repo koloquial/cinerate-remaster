@@ -26,8 +26,6 @@ const App = () => {
   const [room, setRoom] = useState();
   const [publicRooms, setPublicRooms] = useState([])
 
-  console.log('app created');
-
   // socket listen
   useEffect(() => {
 

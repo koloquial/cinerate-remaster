@@ -12,11 +12,11 @@ const AwaitGuesses = ({ socket, entry, room }) => {
 
     return (
         <div className='stage-container'>
-            <div className='full-width-container'>
-                <h2>Waiting for Others to Vote</h2>
+            <h3>Waiting for Votes</h3>
+            
+            <div className='time-container'>
                 <p>{time}s</p>
             </div>
-            
             <ChatBox socket={socket} entry={entry} room={room} />
         </div>
     )

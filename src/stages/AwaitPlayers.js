@@ -1,7 +1,11 @@
+import { useState } from 'react';
+
 //components
 import ChatBox from '../components/ChatBox';
 
 function AwaitPlayers({ socket, entry, room, setNotification }){
+    const [playerName, setPlayerName] = useState('');
+
     const copyToClipboard = () => {
         // get the text field
         const copyText = document.getElementById('room-id');
@@ -33,45 +37,69 @@ function AwaitPlayers({ socket, entry, room, setNotification }){
             socket.emit('start_game', { id: room.id })
         }
     }
+
+        //update player name
+        const updatePlayerName = () => {
+            if(playerName && playerName.length <= 10){
+                socket.emit('update_name', {
+                    id: socket.id, 
+                    name: playerName
+                });
+                localStorage.setItem('cinerate-name',  playerName)
+                setPlayerName('');
+            }else{
+                setNotification('Player name must be between 1 and 10 characters.');
+            }
+        }
+
+            //onchange handlers
+    const handler = (event) => {
+        setPlayerName(event.target.value); 
+    }
+    
     
     return (
         <div className='stage-container'>
-            <div className='full-width-container'>
-                <h2>
-                    Awaiting Critics
-                </h2>
-            </div>
-
-            <div className='full-width-container'>
-                {room.host.id === socket.id ? 
-                    <button onClick={startGame}>
-                        Start Game
-                    </button>
-                
-                : <></>}
-                <button onClick={leaveRoom}>
-                    Leave Room
+            <h3>
+                Awaiting Critics
+            </h3>
+          
+            {room.host.id === socket.id ? 
+                <button onClick={startGame}>
+                    Start Game
                 </button>
-            </div>
+            : <></>}
 
-            <div className='full-width-container'>
-                <h3>
-                    Room ID ({room.password ? 'Private' : 'Public'})
-                </h3>
+            <button onClick={leaveRoom}>
+                Leave Room
+            </button>
+            
+            <h4>
+                Room ID ({room.password ? 'Private' : 'Public'})
+            </h4>
+            <input 
+                type='text' 
+                id='room-id' 
+                value={room.id} 
+                readOnly 
+            />
+            <button onClick={copyToClipboard}>
+                Copy ID
+            </button>
+            
+            <h4>Name</h4>
                 <input 
                     type='text' 
-                    id='room-id' 
-                    value={room.id} 
-                    readOnly 
+                    id='playerName'
+                    placeholder={entry.name}
+                    value={playerName} 
+                    onChange={handler} 
                 />
-                <button onClick={copyToClipboard}>
-                    Copy ID
-                </button>
-            </div>
-                
-            <div className='full-width-container'>
-                <h3>Critics ({room.players.length})</h3>
-                <div className='critics-container'>
+                <button onClick={updatePlayerName}>Update</button>
+           
+                <h4>Critics ({room.players.length})</h4>
+               
+                <div className='block'>
                     {room.players.map((player, index) => {
                         return (
                             <div key={`player-${index}`}>
@@ -82,8 +110,8 @@ function AwaitPlayers({ socket, entry, room, setNotification }){
                         )
                     })}
                 </div>
-            </div>
-            <ChatBox socket={socket} entry={entry} room={room} />
+            
+                <ChatBox socket={socket} entry={entry} room={room} />
         </div>
     )
 }

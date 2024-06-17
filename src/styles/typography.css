@@ -8,6 +8,28 @@ h1, h2, h3, h4, h5, p {
     cursor: default;
 }
 
+h1{
+    margin: 0;
+    padding: 0;
+}
+
+h3{
+    color: var(--gray);
+}
+
+h4{
+    display: block;
+    color: var(--gray);
+    margin-bottom: 5px;
+    margin-top: 20px;
+}
+
+p{
+    color: var(--white);
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 .title{
     font-family: 'Monoton', sans-serif;
     font-weight: 400;
@@ -21,25 +43,6 @@ h1, h2, h3, h4, h5, p {
     font-weight: 400;
     font-style: normal;
     color: var(--gray)
-}
-
-h2, h3, h4{
-    display: block;
-    color: var(--gray);
-}
-
-h4{
-    color: var(--gray);
-}
-
-p{
-    display: block;
-}
-
-
-h1, h3{
-    margin: 0;
-    padding: 0;
 }
 
 .primary{

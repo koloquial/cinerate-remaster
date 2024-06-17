@@ -56,12 +56,10 @@ const AssignMovie = ({ socket, entry, room, setNotification }) => {
         <div className='stage-container'>
             {room.dealer.id === socket.id ? 
             <>
-                <div className='full-width-container'>
-                    <h2>Select Movie</h2>
-                    <p>{time}s</p>
-                </div>
+                
+                    <h3>Select Movie</h3>
 
-                <div className='full-width-container'>
+              
                     <input 
                         type='text' 
                         placeholder='Movie Title' 
@@ -69,9 +67,7 @@ const AssignMovie = ({ socket, entry, room, setNotification }) => {
                         onChange={handleMovieTitleInput} 
                     />
                     <button onClick={handleSearch}>Search</button>
-                </div>
                 
-                    <div className='full-width-container'>
                         {!loading && searchResults ? 
                             <div className='search-results'>
                                 {searchResults.map((movie, index) => {
@@ -90,12 +86,14 @@ const AssignMovie = ({ socket, entry, room, setNotification }) => {
                                 })}
                             </div> 
                         : <></>}
-                    </div>
             </> : 
                 <div className='full-width-container'>
-                    <h2>{room.dealer.name} is choosing a movie</h2>
-                    <p>{time}s</p>
+                    <h3>{room.dealer.name} is choosing a movie</h3>
                 </div>}
+
+                <div className='time-container'>
+                    <p>{time}s</p>
+                </div>
                 
                 <ChatBox socket={socket} entry={entry} room={room} />
         </div>

@@ -1,0 +1,13 @@
+table{
+    width: 100%;
+}
+
+tr{
+    width: 100%;
+}
+
+td{
+    vertical-align: top;
+    padding-right: 10px;
+    margin: 0;
+}

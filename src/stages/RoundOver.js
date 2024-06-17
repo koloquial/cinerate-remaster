@@ -38,89 +38,100 @@ const RoundOver = ({ socket, entry, room }) => {
 
     return (
         <div className='stage-container'>
-            <div className='full-width-container'>
-                <h2>Round Over</h2>
-                <p>{time}s</p>
-            </div>
-
+            <h3>Round Over</h3>
             
-                <div className='full-width-container' style={{border: '1px solid red'}}> 
-                    <center>
-                        <h1 className='gray'>{room.critMovie.Title}</h1>
-                        <h2 className='secondary'>{room.critMovie.imdbRating}</h2>
-                        <p>{room.critMovie.imdbVotes} votes</p>
-                    </center>
-                </div>
+            <div style={{border: '5px double red', borderRadius: '5px', padding: '10px', width: '100%'}}> 
+                <center>
+                    <h2 className='gray' style={{margin: '5px'}}>
+                        {room.critMovie.Title}
+                    </h2>
+                    <h1 style={{color: 'gold', margin: '5px'}}>
+                        {room.critMovie.imdbRating}
+                    </h1>
+                    <p style={{margin: '5px'}}>
+                        {room.critMovie.imdbVotes} votes
+                    </p>
+                </center>
+            </div>
+            
+            <h4>
+                {room.winners.length > 1 ? 
+                'Winners' : <></>}
 
-                <div className='full-width-container'>
-                    <h3>{room.winners.length > 1 ? 'Winners' : ''}</h3>
-                    <h3>{room.winners.length === 1 ? 'Winner' : ''}</h3>
-                    <h3>{room.winners.length === 0 ? 'Push' : ''}</h3>
+                {room.winners.length === 1 ? 
+                'Winner' : <></>}
 
-                    {room.winners[0] !== null ?
-                        <table style={{width: '100%'}}>
-                            <tbody>
-                                {room.winners.map(winner => {
-                                    return (
-                                        <tr>
-                                            <td>
-                                                <p>{winner.user.name}</p>
-                                            </td>
-                                            <td style={{textAlign: 'right'}}>
-                                                <p>{winner.vote}</p>
-                                            </td>
-                                        </tr>
-                                    )
-                                })}
-                            </tbody>
-                        </table> 
-                    : <p>No winner.</p>}
-                </div>
+                {room.winners.length === 0 ? 
+                'No Winner' : <></>}
+            </h4>
 
-                <div className='full-width-container'>
-                    <h3>Guesses</h3>
-                    <table style={{width: '100%'}}>
-                        <tbody>
-                            {room.guesses.map(guess => {
-                                return (
-                                    <tr>
-                                        <td>
-                                            <p>{guess.user.name}</p>
-                                        </td>
-                                        <td style={{textAlign: 'right'}}>
-                                            {parseFloat(guess.vote) === parseFloat(room.critMovie.imdbRating) ?
-                                                <p style={{color: 'gold'}}>{guess.vote}</p> : <></>}
-                                            {parseFloat(guess.vote) > parseFloat(room.critMovie.imdbRating) ?
-                                                <p style={{color: 'red'}}>{guess.vote}</p> : <></>}
-                                            {parseFloat(guess.vote) < parseFloat(room.critMovie.imdbRating) ?
-                                                <p>{guess.vote}</p> : <></>}   
-                                        </td>
-                                    </tr>
-                                )
-                            })}
-                        </tbody>
-                    </table>
-                </div>
-
-            <div className='full-width-container'>
-                <h3>Scoreboard</h3>
-                <table style={{width: '100%'}}>
+            {room.winners[0] !== null ?
+                <table>
                     <tbody>
-                        {room.players.map(player => {
+                        {room.winners.map(winner => {
                             return (
                                 <tr>
-                                    <td s>
-                                        <p>{player.name}</p>
+                                    <td>
+                                        <p>
+                                            {winner.user.name}
+                                        </p>
                                     </td>
-                                    <td style={{textAlign: 'right'}}>
-                                        <p>{player.score}</p>
+                                    <td>
+                                        <p>
+                                            {winner.vote}
+                                        </p>
                                     </td>
                                 </tr>
                             )
                         })}
                     </tbody>
-                </table>
+                </table> 
+            : <></>}
+            
+            <h4>Guesses</h4>
+            <table>
+                <tbody>
+                    {room.guesses.map(guess => {
+                        return (
+                            <tr>
+                                <td>
+                                    <p>
+                                        {guess.user.name}
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        {guess.vote}
+                                    </p>
+                                </td>
+                            </tr>
+                        )
+                    })}
+                </tbody>
+            </table>
+            
+            <h4>Scoreboard</h4>
+            <table>
+                <tbody>
+                    {room.players.map(player => {
+                        return (
+                            <tr>
+                                <td>
+                                    <p>{player.name}</p>
+                                </td>
+                                <td>
+                                    <p>{player.score}</p>
+                                </td>
+                            </tr>
+                        )
+                    })}
+                </tbody>
+            </table>
+
+            <div className='time-container'>
+                <p>{time}s</p>
             </div>
+            
             <ChatBox socket={socket} entry={entry} room={room} />
         </div>
     )

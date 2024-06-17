@@ -19,7 +19,7 @@ const ChatBox = ({ socket, entry, room }) => {
     return (
         <>
         <div className='chat' onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>
-            <h3>Chat</h3>
+            <p className='gray'>Chat</p>
             {isOpen ? 
                 <>
                     <div id='chat-window' className='chat-window'>
@@ -45,7 +45,6 @@ const ChatBox = ({ socket, entry, room }) => {
                     <button onClick={sendMessage}>Send</button>
                 </> : <></>}
         </div>
-            
         </>
     )
 }
