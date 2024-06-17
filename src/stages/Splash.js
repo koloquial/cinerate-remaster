@@ -7,6 +7,21 @@ function Splash({ socket, entry, setNotification, publicRooms }){
     const [joinRoomID, setJoinRoomID] = useState('');
     const [joinRoomPassword, setJoinRoomPassword] = useState('');
 
+    //localStorage name check
+    useEffect(() => {
+        if(playerName === ''){
+           try{
+            if(localhost.getItem('cinerate')){
+                socket.emit('update_name', {
+                    id: socket.id, 
+                    name: localStorage.getItem('cinerate').name
+                });
+                setPlayerName(localStorage.getItem('cinerate').name)
+            }
+           } catch(e){}
+        }
+    }, [playerName])
+
     //update player name
     const updatePlayerName = () => {
         if(playerName && playerName.length <= 10){
@@ -14,6 +29,7 @@ function Splash({ socket, entry, setNotification, publicRooms }){
                 id: socket.id, 
                 name: playerName
             });
+            localStorage.setItem('cinerate', { name: playerName})
             setPlayerName('');
         }else{
             setNotification('Player name must be between 1 and 10 characters.');
