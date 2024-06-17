@@ -36,7 +36,15 @@ const MovieCard = ({ title, year, img, setMovieID }) => {
     return (
         <div className='movie-card' onClick={() => setMovieID(title)}>
             <img src={poster} alt={title} />
-            <p>{title}<br />{year}</p>
+            <p>
+              <span className='gray'>
+                {title}
+              </span>
+              <br />
+              <span className='white'>
+                {year}
+              </span>
+            </p>
         </div>
     )
 }

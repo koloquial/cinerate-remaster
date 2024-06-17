@@ -1,50 +1,83 @@
-/* App: contains view container */
+/* app: contains view container */
 .container{
     display: flex;
-    flex-direction: column;
     align-items: center;
+    flex-flow: column wrap;
+    justify-content: center;
 }
 
-/* App: contains stage container */
+/* app: contains stage container */
 .view-container{
-    margin: 0;
-    background-color: var(--black);
     max-width: 860px;
+    flex-grow: 1;
+    padding: 10px;
 }
 
-/* Stages: contains all stage views*/
+/* stages: contains all stage views*/
 .stage-container{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-flow: row wrap;
+    gap: 0 10px;
 }
 
-/* Contains notifications */
+/* splash: contains splash title */
+.title-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.full-width-container{
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.half-width-container{
+    min-width: 45%;
+}
+
+/* contains notifications */
 .notification-bar{
     position: absolute;
-    bottom: 0px;
-    left: 0px;
+    top: 0px;
+    right: 0px;
     background-color: var(--black);
     color: var(--white);
+    font-size: x-small;
 }
 
 /* Contains heading footer for stages */
-.heading-footer{
-    position: absolute;
-    bottom: 0px;
-    right: 20px;
-    width: 20px;
-    background-color: var(--black);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0px 20px 0px 20px;
-    border: 1px solid var(--secondary);
-    cursor: pointer;
-    overflow: hidden;
+.chat{
+    position: fixed;
+    bottom: 1px;
+    width: 100%;
+    background-color: var(--primary);
+    border: 1px solid var(--primary);
+    height: 40px;
+    right: 10px;
+    transition: .5s;
+    padding: 10px 0px 0px 10px;
+    border-radius: 5px;
+    width: 150px;
 
     &:hover{
+        padding: 10px 10px 0px 10px;
+        transition: .5s;
         height: 300px;
+        z-index: 100;
+        background-color: var(--black);
+        width: 300px;
     }
+}
+
+.chat-window{
+    display: block;
+    height: 200px !important;
+    padding: 5px;
+    font-size: small;
+    overflow-y: scroll;
 }
 
 /* AwaitingPlayers */
@@ -53,23 +86,6 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 25px;
-}
-
-/* Table: public games */
-table{
-    border-collapse: separate; 
-    border-spacing: 0 1em;
-}
-
-td{
-    vertical-align: top;
-}
-
-.title-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center
 }
 
 .search-results{
@@ -86,23 +102,13 @@ td{
     border: 1px solid var(--black);
 
     &:hover{
-        border: 1px solid red;
+        border: 1px solid var(--secondary);
     }
 }
 
-.movie-vote-container{
+.cast-vote-{
     display: flex;
-    flex-direction: row;
-    gap: 15px;
-}
-
-.chat-window{
-    display: block;
-    height: 150px !important;
-    border: 1px solid var(--secondary) !important;
-    padding: 5px;
-    margin-bottom: 5px;
-    overflow-y: scroll;
+    flex-flow: column wrap;
 }
 
 .public-game{
@@ -111,14 +117,19 @@ td{
     border: 1px solid var(--primary);
     margin-bottom: 5px;
     cursor: pointer;
+    border-radius: 5px;
+    background-color: var(--secondary);
+    color: var(--gray);
+    font-size: small;
 
     &:hover{
-        border: 1px solid var(--secondary);
+        transition: .5s;
+        border: 1px solid var(--primary);
+        background-color: var(--primary);
     }
 }
 
 .public-game-container{
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
 }

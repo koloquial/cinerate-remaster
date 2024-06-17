@@ -66,7 +66,6 @@ const App = () => {
 
   return (
     <div className='container'>
-
       {loading ? <Loading /> : 
         <div className='view-container'>
           {stage === 'splash' ?
@@ -134,12 +133,6 @@ const App = () => {
           {notification}
         </p>
       </div>
-
-      {/* {stage !== 'splash' ? 
-        <div className='heading-footer'>
-          <span className='title'>C</span>
-        </div> 
-      : <></>} */}
     </div>
   )
 }

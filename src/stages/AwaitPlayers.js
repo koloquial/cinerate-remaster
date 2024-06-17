@@ -1,4 +1,7 @@
-const AwaitPlayers = ({ socket, entry, room, setNotification }) => {
+//components
+import ChatBox from '../components/ChatBox';
+
+function AwaitPlayers({ socket, entry, room, setNotification }){
     const copyToClipboard = () => {
         // get the text field
         const copyText = document.getElementById('room-id');
@@ -16,14 +19,14 @@ const AwaitPlayers = ({ socket, entry, room, setNotification }) => {
         setNotification('Copied Room ID.');
     }
 
-    const leaveRoom = () => {
+    function leaveRoom(){
         socket.emit('leave_room', {
             id: socket.id, 
             room: room
         });
     }
 
-    const startGame = () => {
+    function startGame(){
         if(room.players.length == 1){
             setNotification('You need at least two players to start a game.')
         }else{
@@ -33,30 +36,54 @@ const AwaitPlayers = ({ socket, entry, room, setNotification }) => {
     
     return (
         <div className='stage-container'>
-            <p>Awaiting Critics</p>
-            
-            {room.host.id === socket.id ? <>
-                <button onClick={startGame}>Start Game</button>
-            </> : <></>}
-            
-            <button onClick={leaveRoom}>Leave Room</button>
-
-            <p>Room ID ({room.password ? 'Private' : 'Public'})</p>
-            <input type='text' id='room-id' value={room.id} readOnly />
-            <button onClick={copyToClipboard}>Copy ID</button>
-
-            <p>Critics ({room.players.length})</p>
-            <div className='critics-container'>
-                {room.players.map((player, index) => {
-                    return (
-                        <div key={`player-${index}`}>
-                            <p>
-                                {player.name}
-                            </p>
-                        </div>
-                    )
-                })}
+            <div className='full-width-container'>
+                <h2>
+                    Awaiting Critics
+                </h2>
             </div>
+
+            <div className='full-width-container'>
+                {room.host.id === socket.id ? 
+                    <button onClick={startGame}>
+                        Start Game
+                    </button>
+                
+                : <></>}
+                <button onClick={leaveRoom}>
+                    Leave Room
+                </button>
+            </div>
+
+            <div className='full-width-container'>
+                <h3>
+                    Room ID ({room.password ? 'Private' : 'Public'})
+                </h3>
+                <input 
+                    type='text' 
+                    id='room-id' 
+                    value={room.id} 
+                    readOnly 
+                />
+                <button onClick={copyToClipboard}>
+                    Copy ID
+                </button>
+            </div>
+                
+            <div className='full-width-container'>
+                <h3>Critics ({room.players.length})</h3>
+                <div className='critics-container'>
+                    {room.players.map((player, index) => {
+                        return (
+                            <div key={`player-${index}`}>
+                                <p>
+                                    {player.name}
+                                </p>
+                            </div>
+                        )
+                    })}
+                </div>
+            </div>
+            <ChatBox socket={socket} entry={entry} room={room} />
         </div>
     )
 }

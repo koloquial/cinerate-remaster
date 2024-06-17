@@ -52,82 +52,78 @@ function CastVote({ socket, room, setStage, setNotification }){
 
     return (
         <div className='stage-container'>
-            <table style={{width: '100%'}}>
-                <tbody>
-                    <tr>
-                        <td>
-                            <p>Cast Vote</p>
-                        </td>
-                        <td style={{textAlign: 'right'}}>
-                            <p>{time}s</p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div className='full-width-container'>
+                <h2>Cast Vote</h2>
+                <p>{time}s</p>
+            </div>                
 
-            <center>
+            <div>
+            <img 
+                src={poster} 
+                style={{
+                    maxWidth: '240px', 
+                    maxHeight: '360px',
+                    marginRight: '25px'
+                }} 
+            />
+            <br /><br />
+            </div>
+            
+                
+            <div style={{width: '170px'}}>
                 <h3>{room.critMovie.Title}</h3>
                 <p>
-                    {room.critMovie.Year} ({room.critMovie.Rated}) {room.critMovie.Genre}
+                    ({room.critMovie.Year})
                 </p>
-            </center>
-
-            <div className='movie-vote-container'>
-                <div>
-                    <img 
-                        src={poster} 
-                        style={{
-                            maxWidth: '240px', maxHeight: '360px'
-                        }} 
+                <br /><br />
+                <center>
+                    <h3>Rating</h3>
+                    <h3 className='secondary'>{castVote}</h3>
+                    <input 
+                        type='range' 
+                        min='0' 
+                        max='10' 
+                        step='.1' 
+                        value={castVote} 
+                        onChange={handleCastVote} 
                     />
-                </div>
-                
+                    <button onClick={() => cast()}>
+                        Submit Rating
+                    </button>  
+                </center>
+            </div>
+        
+            <div className='movie-info'>
                 <div>
-                    <p style={{marginTop: '0px'}} className='primary'>
-                        Director
-                    </p>
-
+                    <h4>Director</h4>
                     <p>
                         {room.critMovie.Director}
                     </p>
+                </div>
 
-                    <p className='primary'>
-                        Cast
+                <div>
+                    <h4>Cast</h4>
+                    <p>
+                        {room.critMovie.Actors}
                     </p>
+                </div>
 
-                    {room.critMovie.Actors.split(',').map((line, index) => {
-                        return <p>{line}</p>
-                    })}
-                
-                    <p className='primary'>
-                        Awards
+                <div>
+                    <h4>Awards</h4>
+                    <p>
+                        {room.critMovie.Awards}
                     </p>
+                </div>
 
-                    {room.critMovie.Awards.split('.').map((line, index) => {
-                    return <p>{line}</p>
-                    })}
-                
-                    
-                    <p className='primary'>Box Office</p>
-
-                        {room.critMovie.BoxOffice ? <p>{room.critMovie.BoxOffice}</p> : <p>N/A</p>}
-                    </div>
+                {room.critMovie.BoxOffice ? 
+                    <div>
+                        <h4>Box Office</h4>
+                        <p>
+                            {room.critMovie.BoxOffice}
+                        </p>
+                    </div> 
+                : <></>}
             </div>
-
-            <center>
-                <h3 style={{marginTop: '10px'}} className='primary'>Rating</h3>
-                <h3>{castVote}</h3>
-            </center>
-
-            <input 
-                type='range' 
-                min='0' 
-                max='10' 
-                step='.1' 
-                value={castVote} 
-                onChange={handleCastVote} 
-            />
-            <button onClick={() => cast()}>Submit Rating</button>    
         </div>
     )
 }

@@ -1,27 +1,55 @@
 h1, h2, h3, h4, h5, p, button, input, td {
-    font-family: "Fragment Mono", monospace;
+    font-family: 'Fragment Mono', monospace;
     font-weight: 400;
     font-style: normal;
 }
 
 .title{
-    font-family: "Monoton", sans-serif;
+    font-family: 'Monoton', sans-serif;
     font-weight: 400;
     font-style: normal;
+    margin: 0;
+    padding: 0;
+    color: var(--secondary);
 }
 
 .title-alt{
     font-weight: 400;
     font-style: normal;
+    color: var(--gray)
 }
+
+h2, h3, h4{
+    display: block;
+    color: var(--gray);
+}
+
+h4{
+    color: var(--gray);
+}
+
+p{
+    display: block;
+}
+
 
 h1, h3{
     margin: 0;
     padding: 0;
 }
 
-p, td{
-    margin-bottom: 10px;
-    padding: 0;
-    font-size: 12px;
+.primary{
+    color: var(--primary);
+}
+
+.secondary{
+    color: var(--secondary);
+}
+
+.gray{
+    color: var(--gray);
+}
+
+.white{
+    color: var(--white);
 }

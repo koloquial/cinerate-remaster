@@ -56,63 +56,48 @@ const AssignMovie = ({ socket, entry, room, setNotification }) => {
         <div className='stage-container'>
             {room.dealer.id === socket.id ? 
             <>
-                <table style={{width: '100%'}}>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <p>Choose a movie</p>
-                            </td>
-                            <td style={{textAlign: 'right'}}>
-                                <p>{time}s</p>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div className='full-width-container'>
+                    <h2>Select Movie</h2>
+                    <p>{time}s</p>
+                </div>
 
-                <input 
-                    type='text' 
-                    placeholder='Movie Title' 
-                    value={movieTitleInput} 
-                    onChange={handleMovieTitleInput} 
-                />
-                <button onClick={handleSearch}>Search</button>
+                <div className='full-width-container'>
+                    <input 
+                        type='text' 
+                        placeholder='Movie Title' 
+                        value={movieTitleInput} 
+                        onChange={handleMovieTitleInput} 
+                    />
+                    <button onClick={handleSearch}>Search</button>
+                </div>
                 
-                <br />
-
-                {!loading && searchResults ? 
-                    <div className='search-results'>
-                        {searchResults.map((movie, index) => {
-                            if(movie.imdbID){
-                                return(
-                                    <MovieCard 
-                                        key={index}
-                                        id={movie.imdbID}
-                                        title={movie.Title} 
-                                        year={movie.Year} 
-                                        img={movie.Poster}
-                                        setMovieID={setMovieID}
-                                    />
-                                )
-                            }
-                        })}
-                    </div> : <></>}
-
-            </> : <>
-                <table style={{width: '100%'}}>
-                        <tbody>
-                            <tr>
-                                <td>
-                                <p>{room.dealer.name} is choosing a movie</p>
-                                </td>
-                                <td style={{textAlign: 'right'}}>
-                                    <p>{time}s</p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div className='full-width-container'>
+                        {!loading && searchResults ? 
+                            <div className='search-results'>
+                                {searchResults.map((movie, index) => {
+                                    if(movie.imdbID){
+                                        return(
+                                            <MovieCard 
+                                                key={index}
+                                                id={movie.imdbID}
+                                                title={movie.Title} 
+                                                year={movie.Year} 
+                                                img={movie.Poster}
+                                                setMovieID={setMovieID}
+                                            />
+                                        )
+                                    }
+                                })}
+                            </div> 
+                        : <></>}
+                    </div>
+            </> : 
+                <div className='full-width-container'>
+                    <h2>{room.dealer.name} is choosing a movie</h2>
+                    <p>{time}s</p>
+                </div>}
                 
                 <ChatBox socket={socket} entry={entry} room={room} />
-            </>}
         </div>
     )
 }

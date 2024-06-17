@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const Splash = ({ socket, entry, setNotification, publicRooms }) => {
+function Splash({ socket, entry, setNotification, publicRooms }){
     //text input values
     const [playerName, setPlayerName] = useState('');
     const [createRoomPassword, setCreateRoomPassword] = useState('');
@@ -69,80 +69,80 @@ const Splash = ({ socket, entry, setNotification, publicRooms }) => {
         <div className='stage-container'>
             <div className='title-container'>
                 <h1>
-                <span className='secondary title'>Cine</span><span className='title-alt'>Rate</span>
-              </h1>
+                    <span className='title'>cine</span>
+                    <span className='title-alt'>Rate</span>
+                </h1>
                 <p>
                     Guess movie ratings with friends
                 </p>
             </div>
 
-            <p>Name</p>
-            <input 
-                type='text' 
-                id='playerName'
-                placeholder={entry.name}
-                value={playerName} 
-                onChange={handler} 
-            />
-            <button onClick={updatePlayerName}>Update</button>
-           
-            <p>Create Game</p>
-            <input 
-                type='text' 
-                id='createRoomPassword'
-                placeholder='(Optional) Password'
-                value={createRoomPassword} 
-                onChange={handler} 
-            />  
-            <button onClick={createRoom}>Create</button>
-           
-            <p>Join Game</p>
-            <input 
-                type='text'
-                id='joinRoomID' 
-                value={joinRoomID} 
-                onChange={handler} 
-                placeholder='Room ID' 
-            />
-            <input 
-                type='text'
-                id='joinRoomPassword' 
-                value={joinRoomPassword} 
-                onChange={handler} 
-                placeholder='Room Password'  
-            />
-            <button onClick={joinRoom}>Join</button>
-          
-            <p>Public Games</p>
-            <div className='public-game-container'>
-            {Object.keys(publicRooms).map((id, index) => {
-                //check if public room has password
-                if(publicRooms[id].password === '' && publicRooms[id].players.length < 4 && !publicRooms[id].active){
-                    //room does not have a password
-                    return (
-                        <div 
-                            className='public-game'
-                            key={`room-${id}-${index}`}
-                            onClick={() => joinPublicRoom(id)}
-                        >
-                            <table style={{width: '100%'}}>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <span className='primary'>Host: </span>{publicRooms[id].host.name}
-                                        </td>
-                                        <td style={{textAlign: 'right'}}>
-                                            <span className='primary'>Players: </span>{publicRooms[id].players.length}/4
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    )
-                }else{
-                    return;
-                }
-            })}
+            <div className='half-width-container'>
+                <h3>Name</h3>
+                <input 
+                    type='text' 
+                    id='playerName'
+                    placeholder={entry.name}
+                    value={playerName} 
+                    onChange={handler} 
+                />
+                <button onClick={updatePlayerName}>Update</button>
+            
+                <h3>Create Game</h3>
+                <input 
+                    type='text' 
+                    id='createRoomPassword'
+                    placeholder='(Optional) Password'
+                    value={createRoomPassword} 
+                    onChange={handler} 
+                />  
+                <button onClick={createRoom}>Create</button>
+            
+                <h3>Join Game</h3>
+                <input 
+                    type='text'
+                    id='joinRoomID' 
+                    value={joinRoomID} 
+                    onChange={handler} 
+                    placeholder='Room ID' 
+                />
+                <input 
+                    type='text'
+                    id='joinRoomPassword' 
+                    value={joinRoomPassword} 
+                    onChange={handler} 
+                    placeholder='Room Password'  
+                />
+                <button onClick={joinRoom}>Join</button>
+            </div>
+
+            <div className='half-width-container'>
+                <h3>Public Games</h3>
+                <div className='public-game-container'>
+                    {Object.keys(publicRooms).map((id, index) => {
+                        //check if public room has password
+                        if(publicRooms[id].password === '' && publicRooms[id].players.length < 4 && !publicRooms[id].active){
+                            //room does not have a password
+                            return (
+                                <div 
+                                    className='public-game'
+                                    key={`room-${id}-${index}`}
+                                    onClick={() => joinPublicRoom(id)}
+                                >
+                                    <p>
+                                        Host: {publicRooms[id].host.name} &nbsp;&nbsp;
+                                        Players: {publicRooms[id].players.length}/# &nbsp;&nbsp;
+                                        Points: 5
+                                    </p>
+
+                                    
+                                </div>
+                            )
+                        }else{
+                            return;
+                        }
+                    })}
+                </div>
             </div>
         </div>
     )
