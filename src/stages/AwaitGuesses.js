@@ -15,7 +15,7 @@ const AwaitGuesses = ({ socket, entry, room }) => {
             <h3>Waiting for Votes</h3>
             
             <div className='time-container'>
-                <p>{time}s</p>
+                <p>{time}</p>
             </div>
             <ChatBox socket={socket} entry={entry} room={room} />
         </div>

@@ -24,16 +24,12 @@ const App = () => {
   const [entry, setEntry] = useState({id: '', name: '', score: ''});
   const [notification, setNotification] = useState('');
   const [room, setRoom] = useState();
-  const [publicRooms, setPublicRooms] = useState([])
+  const [publicRooms, setPublicRooms] = useState([]);
 
   // socket listen
   useEffect(() => {
-
-      console.log('socket updated', socket);
-
       // on connection retrieve id
       socket.on('entry', (data) => {
-        console.log('entry');
         setEntry(data);
         setLoading(false);
       });
@@ -46,6 +42,11 @@ const App = () => {
       // update stage
       socket.on('update_stage', (data) => {
         setStage(data.stage);
+      });
+
+      // update quote
+      socket.on('update_quote', (data) => {
+        console.log('update quote', data)
       });
 
       // update room
@@ -109,7 +110,7 @@ const App = () => {
                 <AwaitGuesses 
                     socket={socket}
                     entry={entry}
-                    room={room}
+                    room={room} 
                 /> : <></>}
 
           {stage === 'round-over' ?

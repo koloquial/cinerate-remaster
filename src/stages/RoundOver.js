@@ -129,9 +129,9 @@ const RoundOver = ({ socket, entry, room }) => {
             </table>
 
             <div className='time-container'>
-                <p>{time}s</p>
+                <p>{time}</p>
             </div>
-            
+
             <ChatBox socket={socket} entry={entry} room={room} />
         </div>
     )

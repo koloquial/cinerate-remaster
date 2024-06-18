@@ -15,6 +15,7 @@ const AssignMovie = ({ socket, entry, room, setNotification }) => {
     const [movieID, setMovieID] = useState(null);
     const [time, setTime] = useState(30);
     const [loading, setLoading] = useState(false);
+    const [quote, setQuote] = useState({ author: '', text: ''});
 
     const handleMovieTitleInput = (event) => {
         setMovieTitleInput(event.target.value);
@@ -52,14 +53,21 @@ const AssignMovie = ({ socket, entry, room, setNotification }) => {
         }
     }, [time])
 
+    useEffect(() => {
+        socket.emit('get_quote', { room: room.id })
+    }, [])
+
+    useEffect(() => {
+        socket.on('update_quote', ({ quote }) => {
+            setQuote(quote)
+          });
+    }, [socket])
+
     return (
         <div className='stage-container'>
             {room.dealer.id === socket.id ? 
             <>
-                
                     <h3>Select Movie</h3>
-
-              
                     <input 
                         type='text' 
                         placeholder='Movie Title' 
@@ -89,10 +97,15 @@ const AssignMovie = ({ socket, entry, room, setNotification }) => {
             </> : 
                 <div className='full-width-container'>
                     <h3>{room.dealer.name} is choosing a movie</h3>
+                    <br /><br /><br /><br />
+                    <h4>"{quote.text}"</h4>
+                    <br />
+                    <p><i>— {quote.author}</i></p>
+                
                 </div>}
 
                 <div className='time-container'>
-                    <p>{time}s</p>
+                    <p>{time}</p>
                 </div>
                 
                 <ChatBox socket={socket} entry={entry} room={room} />

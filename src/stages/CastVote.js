@@ -53,7 +53,6 @@ function CastVote({ socket, room, setStage, setNotification }){
     return (
         <div className='stage-container'>
             <h3>Cast Vote</h3>
-            {console.log('moibe', room.critMovie)}
             <table>
                 <tbody>
                     <tr>
@@ -137,11 +136,7 @@ function CastVote({ socket, room, setStage, setNotification }){
                         <h4>Box Office</h4>
                         {room.critMovie.BoxOffice ? 
                             <>
-                                {room.critMovie.BoxOffice.split(',').map((line, index) => {
-                                    return (
-                                        <p key={`${line}-${index}`}>{line}</p>
-                                    )
-                                })}
+                                {room.critMovie.BoxOffice}
                             </> 
                         : <p>N/A</p>}
                     </td>
@@ -174,7 +169,7 @@ function CastVote({ socket, room, setStage, setNotification }){
            <br /><br />
            
            <div className='time-container'>
-                <p>{time}s</p>
+                <p>{time}</p>
             </div>
         </div>
     )

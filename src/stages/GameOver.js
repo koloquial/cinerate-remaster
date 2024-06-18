@@ -5,7 +5,6 @@ import { confetti } from '../functions/confetti';
 
 function GameOver({ room, setStage }){
     const [winner, setWinner] = useState('');
-    console.log('room', room)
 
     useEffect(() => {
         //find winner
