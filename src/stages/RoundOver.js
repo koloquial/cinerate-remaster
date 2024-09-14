@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import ChatBox from '../components/ChatBox';
 
 const RoundOver = ({ socket, entry, room }) => {
-    const [time, setTime] = useState(100000);
+    const [time, setTime] = useState(10);
     const [gameOver, setGameOver] = useState(false);
 
     function nextRound(){
