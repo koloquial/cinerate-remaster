@@ -54,6 +54,11 @@ const App = () => {
         setRoom(data);
       });
 
+      // update room chat notification
+      socket.on('update_room_chat_notification', (data) => {
+        setRoom(data);
+      });
+
       // update public rooms
       socket.on('update_public_rooms', (data) => {
         setPublicRooms(data);
@@ -133,11 +138,11 @@ const App = () => {
         </div>
       }
 
-      <div className='notification-bar'>
+      {/* <div className='notification-bar'>
         <p>
           {notification}
         </p>
-      </div>
+      </div> */}
     </div>
   )
 }

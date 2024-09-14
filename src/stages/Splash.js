@@ -69,9 +69,10 @@ function Splash({ socket, entry, setNotification, publicRooms }){
                 <h1>
                     <span className='title'>cine</span>
                     <span className='title-alt'>Rate</span>
+                    <span className='text-small'>(v.1)</span>
                 </h1>
                 <p>
-                    Guess movie ratings with friends
+                    Guess IMDB movie ratings.
                 </p>
            
 
@@ -116,26 +117,21 @@ function Splash({ socket, entry, setNotification, publicRooms }){
                                         key={`room-${id}-${index}`}
                                         onClick={() => joinPublicRoom(id)}
                                     >
-                                        <tr>
-                                            <td style={{width: '43%'}}>
-                                                <p>
-                                                    Host <br />
-                                                    {publicRooms[id].host.name}
-                                                </p>
-                                            </td>
-                                            <td style={{width: '43%'}}>
-                                                <p>
-                                                    Players<br />
-                                                    {publicRooms[id].players.length}/#
-                                                </p>
-                                            </td>
-                                            <td style={{width: '33%'}}>
-                                                <p>
-                                                    Points<br />
-                                                    5
-                                                </p>
-                                            </td>
-                                        </tr>
+                                        <div>
+                                        <p>
+                                            Host <br />
+                                            {publicRooms[id].host.name}
+                                        </p>
+                                        </div>
+                                       
+                                        <div>
+                                        <p>
+                                            Players<br />
+                                            {publicRooms[id].players.length}
+                                        </p>
+                                        </div>
+                                       
+                                            
                                     </div>
                                 )
                             }else{

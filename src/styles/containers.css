@@ -130,6 +130,9 @@ canvas {
     color: var(--gray);
     font-size: small;
     margin-bottom: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 5px;
 
     &:hover{
         transition: .5s;
@@ -141,4 +144,25 @@ canvas {
 .block{
     width: 100%;
     display: block;
+}
+
+.close-chat-window{
+    display: block;
+    position: absolute;
+    top: -35px;
+    right: 0;
+    border: 1px solid var(--primary);
+    width: min-content;
+    padding: 5px 10px 5px 10px;
+    background-color: var(--primary);
+    color: var(--gray);
+
+    font-size: 20px;
+    border-radius: 5px 5px 0px 0px;
+    z-index: 1000000000;
+    cursor: pointer;
+
+    &:hover{
+        background-color: var(--secondary)
+    }
 }

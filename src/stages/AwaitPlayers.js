@@ -40,10 +40,12 @@ function AwaitPlayers({ socket, entry, room, setNotification }){
 
         //update player name
         const updatePlayerName = () => {
+            console.log('room', room)
             if(playerName && playerName.length <= 10){
                 socket.emit('update_name', {
                     id: socket.id, 
-                    name: playerName
+                    name: playerName,
+                    room: room
                 });
                 localStorage.setItem('cinerate-name',  playerName)
                 setPlayerName('');

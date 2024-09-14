@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import ChatBox from '../components/ChatBox';
 
 const RoundOver = ({ socket, entry, room }) => {
-    const [time, setTime] = useState(10);
+    const [time, setTime] = useState(100000);
     const [gameOver, setGameOver] = useState(false);
 
     function nextRound(){
@@ -40,7 +40,7 @@ const RoundOver = ({ socket, entry, room }) => {
         <div className='stage-container'>
             <h3>Round Over</h3>
             
-            <div style={{border: '5px double red', borderRadius: '5px', padding: '10px', width: '100%'}}> 
+            <div style={{border: '1px solid red', borderRadius: '5px', padding: '10px', width: '100%'}}> 
                 <center>
                     <h2 className='gray' style={{margin: '5px'}}>
                         {room.critMovie.Title}

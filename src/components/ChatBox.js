@@ -23,6 +23,7 @@ const ChatBox = ({ socket, entry, room }) => {
             {isOpen ? 
                 <>
                     <div id='chat-window' className='chat-window'>
+                        <div className='close-chat-window' onClick={() => setIsOpen(false)}>Close</div>
                         {room.chat.map(line => {
                             return (
                                 <p>
