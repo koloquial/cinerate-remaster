@@ -9,23 +9,6 @@ const Loading = () => {
         }, 3000);
     }, [])
 
-    let width = 0;
-    const duration = 60 * 1000;
-
-
-
-useEffect(() => {
-    const loadingBar = document.getElementById("loadingBar");
-
-    const reduceLoad = () => {
-        width += (10 / duration) * 100;
-        loadingBar.style.width = width + '%';
-    }
-   
-    setTimeout(() => {
-        reduceLoad();
-    }, 1000)
-}, [])
 
     return (
         <div style={{maxWidth: '500px', paddingTop: '5%'}}>
@@ -36,14 +19,12 @@ useEffect(() => {
                 </h1>
                 <p style={{fontSize: 'small'}}>Guess movie ratings with friends</p>
                 <br />
-                <div className="loading-bar-container">
-  <div className="loading-bar" id="loadingBar"></div>
-</div>
+                <div className="loader" />
                 <br />
                 {disclaim ? 
-                    <div>
+                    <div style={{width: '80%'}}>
                         <p style={{fontSize: 'x-small', textAlign: 'left'}}>
-                            CineRate is currently hosted on a <i>free</i> limited instance and you may experience longer initial loading times. 
+                            CineRate is currently hosted on a limited instance and you may experience longer initial loading times. 
                         </p>
                         <p style={{fontSize: 'x-small', textAlign: 'left'}}>
                             Thank you for your patience.

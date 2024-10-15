@@ -1,4 +1,4 @@
-/* .loader {
+.loader {
     border: 16px solid transparent; 
     border-top: 15px solid var(--primary); 
     border-radius: 50%;
@@ -10,7 +10,7 @@
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-} */
+}
 
 .loading-bar-container {
     width: 100%;
@@ -19,7 +19,7 @@
     border-radius: 15px;
     overflow: hidden;
     position: relative;
-    text-align: left;
+    align-items: left;
   }
   
   .loading-bar {
