@@ -78,7 +78,7 @@ function Splash({ socket, entry, setNotification, publicRooms }){
                 </p>
            
                 {gameOption === 'start' && <>
-                <div className='action-container fade-in'>
+                <div className='action-container fade-in' style={{marginTop: '40px'}}>
                     <div className='button-grid'>
                         <button onClick={() => setGameOption('create game')}>Create Game</button>
                         <button onClick={() => setGameOption('join game')}>Join Game</button>

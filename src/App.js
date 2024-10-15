@@ -66,6 +66,7 @@ const App = () => {
       });
   }, [socket])
 
+
   // notification timeout
   useEffect(() => {
     if(notification){

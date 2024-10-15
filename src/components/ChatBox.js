@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const ChatBox = ({ socket, entry, room }) => {
     const [message, setMessage] = useState('');
@@ -16,10 +16,28 @@ const ChatBox = ({ socket, entry, room }) => {
         setMessage(event.target.value);
     }
 
+    useEffect(() => {
+        console.log('called');
+        let div = document.getElementById('chat');
+        
+        if (div) {
+            // Add the flashing class
+            div.classList.add('flashing');
+    
+            // Remove the flashing class after 1 second (animation duration)
+            const timeoutId = setTimeout(() => {
+                div.classList.remove('flashing');
+            }, 1000); // This matches the duration of the flash animation (1s)
+    
+            // Clean up the timeout on unmount
+            return () => clearTimeout(timeoutId);
+        }
+    }, [room]); // Trigger effect when room changes
+
     return (
         <>
-        <div className={`chat ${isOpen ? 'open' : ''}`}  onClick={() => setIsOpen(true)}>
-            <p className='gray'>Chat</p>
+        <div id='chat' className={`chat ${isOpen ? 'open' : ''}`}  onClick={() => setIsOpen(true)}>
+            <p>Chat</p>
             {isOpen ? 
                 <>
                     <div id='chat-window' className='chat-window'>
