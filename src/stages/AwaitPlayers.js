@@ -40,14 +40,13 @@ function AwaitPlayers({ socket, entry, room, setNotification }){
 
         //update player name
         const updatePlayerName = () => {
-            console.log('room', room)
             if(playerName && playerName.length <= 10){
                 socket.emit('update_name', {
                     id: socket.id, 
                     name: playerName,
                     room: room
                 });
-                localStorage.setItem('cinerate-name',  playerName)
+                
                 setPlayerName('');
             }else{
                 setNotification('Player name must be between 1 and 10 characters.');

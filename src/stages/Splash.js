@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-function Splash({ socket, entry, setNotification, publicRooms }){
+function Splash({ socket, entry, setNotification, publicRooms, usersOnline }){
     //text input values
     const [createRoomPassword, setCreateRoomPassword] = useState('');
     const [joinRoomID, setJoinRoomID] = useState('');
@@ -8,21 +8,6 @@ function Splash({ socket, entry, setNotification, publicRooms }){
 
     // game options
     const [gameOption, setGameOption] = useState('start');
-
-    // //localStorage name check
-    // useEffect(() => {
-    //     if(playerName === ''){
-    //        try{
-    //         if(localhost.getItem('cinerate')){
-    //             socket.emit('update_name', {
-    //                 id: socket.id, 
-    //                 name: localStorage.getItem('cinerate').name
-    //             });
-    //             setPlayerName(localStorage.getItem('cinerate').name)
-    //         }
-    //        } catch(e){}
-    //     }
-    // }, [playerName])
 
     //onchange handlers
     const handler = (event) => {
@@ -42,6 +27,8 @@ function Splash({ socket, entry, setNotification, publicRooms }){
 
     //create room
     const createRoom = () => {
+        console.log('socket id', socket.id);
+        
         socket.emit('create_room', {
             id: socket.id, 
             password: createRoomPassword
@@ -73,9 +60,16 @@ function Splash({ socket, entry, setNotification, publicRooms }){
                     <span className='title-alt'>Rate</span>
                     <span className='text-small'>(v.1.1)</span>
                 </h1>
+              
                 <p>
                     Guess IMDB movie ratings.
                 </p>
+
+                <div>
+                <p>
+                    <b>Online: </b> {usersOnline}
+                </p>
+                </div>
            
                 {gameOption === 'start' && <>
                 <div className='action-container fade-in' style={{marginTop: '40px'}}>

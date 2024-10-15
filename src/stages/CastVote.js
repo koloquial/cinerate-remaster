@@ -6,12 +6,15 @@ function CastVote({ socket, room, setStage, setNotification }){
     const [time, setTime] = useState(30);
     const [poster, setPoster] = useState('');
 
+    console.log('socket', socket);
+    console.log('room', room);
+
     const handleCastVote = (event) =>{
         setCastVote(event.target.value);
     }
 
     const cast = () => {
-        socket.emit('cast_vote', {id: socket.id, room: room.id, vote: castVote});
+        socket.emit('cast_vote', {id: socket.id, room: room.id, vote: castVote, movie: room.critMovie.Title});
         setStage('await-guesses');
         setNotification('Rating submitted.');
     }
@@ -92,7 +95,7 @@ function CastVote({ socket, room, setStage, setNotification }){
                 value={castVote} 
                 onChange={handleCastVote} 
             />
-            <div style={{width: '100%', marginTop: '-30px'}}>
+            <div style={{width: '100%', marginTop: '-20px'}}>
             <center><button style={{marginTop: '0'}} onClick={() => cast()}>
                 Submit Rating
             </button>  

@@ -27,14 +27,21 @@ const App = () => {
   const [notification, setNotification] = useState('');
   const [room, setRoom] = useState();
   const [publicRooms, setPublicRooms] = useState([]);
+  const [usersOnline, setUsersOnline] = useState();
+
 
   // socket listen
   useEffect(() => {
       // on connection retrieve id
       socket.on('entry', (data) => {
-        setEntry(data);
-        setLoading(false);
+          setEntry(data);
+          setLoading(false);
       });
+
+            // users online
+            socket.on('users_online', (data) => {      
+              setUsersOnline(Object.keys(data).length)
+            });
 
       // notifications
       socket.on('notification', (data) => {
@@ -81,8 +88,12 @@ const App = () => {
     <div className='container'>
       {loading ? <Loading /> : 
         <div className='view-container'>
+
+          {console.log('entry', entry)}
+
           {stage === 'splash' ?
-              <Splash 
+              <Splash
+              usersOnline={usersOnline} 
                 socket={socket}
                 entry={entry}
                 publicRooms={publicRooms}
