@@ -105,10 +105,11 @@ canvas {
         z-index: 100;
         rotate: 0deg;
         background-color: var(--black);
-        width: 80%;
+        width: 93%;
         bottom: 30px;
         background-color: rgba(31, 31, 31);
         height: 500px;
+        right: 0;
 }
 
 .chat-window{
@@ -201,3 +202,40 @@ canvas {
         background-color: var(--secondary);
     }
 } */
+
+.hangman{
+    position: fixed;
+    bottom: 30px;
+    background-color: var(--primary);
+    border: 1px solid var(--primary);
+    border-bottom: 0;
+    height: 20px;
+    left: 25px;
+    transition: .5s;
+    padding: 0;
+    padding-left: 0px;
+    padding-bottom: 5px;
+    border-radius: 5px 5px 0px 0px;
+    width: 45px;
+    p{ 
+        cursor: pointer; 
+        color: var(--gray);
+    }
+    &:hover{
+        transition: .7s;
+        background-color: var(--secondary);
+    }
+}
+
+.hangman.open{
+        padding: 10px 10px 10px 10px;
+        transition: .5s;
+        z-index: 100;
+        rotate: 0deg;
+        background-color: var(--black);
+        width: 93%;
+        bottom: 30px;
+        background-color: rgba(31, 31, 31);
+        height: 500px;
+        left: 0;
+}

@@ -17,3 +17,29 @@ button{
         background-color: var(--secondary);
     }
 }
+
+.keyboard-button{
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    display: inline-block;
+    font-size: xx-small;
+    background-color: var(--primary);
+    border: 0;
+    color: var(--gray);
+    cursor: pointer;
+    border-radius: 100%;
+    display: inline-block;
+    transition: .7s;
+    text-align: center;
+
+    &:hover{
+        transition: .7s;
+        background-color: var(--secondary);
+    }
+}
+
+.keyboard-button:disabled{
+    transition: .3s;
+    background-color: var(--blackAlt);
+}

@@ -4,6 +4,7 @@ import io from 'socket.io-client';
 // components
 import Loading from './components/Loading';
 import ChatBox from './components/ChatBox';
+import Hangman from './components/Hangman';
 
 // stages
 import Splash from './stages/Splash';
@@ -145,6 +146,7 @@ const App = () => {
           {notification}
         </p>
       </div>
+       <Hangman />
       {stage !== 'splash' && <ChatBox socket={socket} entry={entry} room={room} />}
     </div>
   )

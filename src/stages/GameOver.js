@@ -78,9 +78,9 @@ function GameOver({ room, setStage }) {
             if(xMove < 50){
                 xMove = xMove - (xMove * 2);
             }
-            const rotateValue = Math.random() * 360;   // Random initial rotation
-            const animationDelay = Math.random() * 50;  // Random delay for staggered falling
-            const animationDuration = Math.random() * 2 + 7;  // Vary duration between 3s to 5s
+            const rotateValue = Math.random() * 360; 
+            const animationDelay = Math.random() * 2;  
+            const animationDuration = Math.random() * 2 + 7;  
 
             const confettiStyle = {
                 left: `${leftPosition}vw`,

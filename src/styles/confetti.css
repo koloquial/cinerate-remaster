@@ -1,17 +1,16 @@
 .confetti-container {
     position: relative;
     pointer-events: none;
-    top: 0;
 }
 
 .confetti {
     position: fixed;
-    top: 0;
+    top: -30px;
     left: -50px;
     width: 15px;  
     height: 15px; 
     background-size: cover;
-    animation: fall linear infinite, scale 3s linear infinite , rotate 3s infinite ;
+    animation: fall linear infinite, scale 3s linear infinite, rotate 3s infinite ;
     transform-style: preserve-3d; 
 }
 
