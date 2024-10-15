@@ -9,14 +9,21 @@ const Loading = () => {
         }, 3000);
     }, [])
 
-useEffect(() => {
-    const loadingBar = document.getElementById("loadingBar");
     let width = 0;
     const duration = 60 * 1000;
 
-    setTimeout(() => {
+
+
+useEffect(() => {
+    const loadingBar = document.getElementById("loadingBar");
+
+    const reduceLoad = () => {
         width += (10 / duration) * 100;
         loadingBar.style.width = width + '%';
+    }
+   
+    setTimeout(() => {
+        reduceLoad();
     }, 1000)
 }, [])
 
