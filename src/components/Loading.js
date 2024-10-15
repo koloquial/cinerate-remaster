@@ -12,17 +12,12 @@ const Loading = () => {
 useEffect(() => {
     const loadingBar = document.getElementById("loadingBar");
     let width = 0;
-    const duration = 60 * 1000; // 1 minute in milliseconds
-    const intervalTime = 10; // update interval in milliseconds
-    
-    const interval = setInterval(() => {
-      width += (intervalTime / duration) * 100; // increment width percentage
-      loadingBar.style.width = width + '%';
-      
-      if (width >= 100) {
-        clearInterval(interval); // stop when it reaches 100%
-      }
-    }, intervalTime);
+    const duration = 60 * 1000;
+
+    setTimeout(() => {
+        width += (10 / duration) * 100;
+        loadingBar.style.width = width + '%';
+    }, 1000)
 }, [])
 
     return (
