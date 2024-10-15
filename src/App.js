@@ -146,7 +146,7 @@ const App = () => {
           {notification}
         </p>
       </div>
-       <Hangman />
+       {stage !== 'splash' && <Hangman />}
       {stage !== 'splash' && <ChatBox socket={socket} entry={entry} room={room} />}
     </div>
   )

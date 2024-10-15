@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Hangman from './Hangman';
 
 const Loading = () => {
     const [disclaim, setDisclaim] = useState(false);
@@ -29,6 +30,10 @@ const Loading = () => {
                         <p style={{fontSize: 'x-small', textAlign: 'left'}}>
                             Thank you for your patience.
                         </p>
+                        <p>
+                            While you wait - enjoy a few games of movie hangman.
+                        </p>
+                        <Hangman />
                     </div>
                 : <></>}
                 

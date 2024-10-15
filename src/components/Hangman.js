@@ -121,14 +121,10 @@ const Hangman = () => {
                 </div>
             )}
 
-            {active &&  
-           
-                        <button style={{marginTop: '70px'}} onClick={(e) => {  e.stopPropagation(); setIsOpen(false)}}> Close</button>}
+            {active && <button style={{marginTop: '70px'}} onClick={(e) => {  e.stopPropagation(); setIsOpen(false)}}> Close</button>}
                         
-                   
-
-            {!active && <button onClick={restartHangman}>Again?</button>}
-      
+            {!active && <div className='action-container'> <div className='button-grid'> <button onClick={(e) => {  e.stopPropagation(); setIsOpen(false)}}> Close</button><button onClick={restartHangman}>Again?</button></div></div>}
+        
             </>}
            </div>
     );
