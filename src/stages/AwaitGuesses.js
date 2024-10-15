@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import ChatBox from "../components/ChatBox"
 
 const AwaitGuesses = ({ socket, entry, room }) => {
-    const [time, setTime] = useState(30);
+    const [time, setTime] = useState(45);
 
     useEffect(() => {
         if(time > 0){

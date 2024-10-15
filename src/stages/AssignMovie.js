@@ -14,7 +14,7 @@ const AssignMovie = ({ socket, entry, room, setNotification }) => {
     const [movieTitleInput, setMovieTitleInput] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [movieID, setMovieID] = useState(null);
-    const [time, setTime] = useState(10);
+    const [time, setTime] = useState(45);
     const [loading, setLoading] = useState(false);
     const [quote, setQuote] = useState({ author: '', text: ''});
 
