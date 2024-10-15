@@ -53,6 +53,7 @@ function CastVote({ socket, room, setStage, setNotification }){
     return (
         <div className='stage-container'>
             <h3>Cast Vote</h3>
+           <div className='content-container'>
             <table>
                 <tbody>
                     <tr>
@@ -68,15 +69,18 @@ function CastVote({ socket, room, setStage, setNotification }){
                             />
                         </td>
                         <td>
+                            <div style={{textAlign: 'left'}}>
                             <h3>{room.critMovie.Title}</h3>
                             
                             {room.critMovie.Released ? <> <h4>Released</h4><p>{room.critMovie.Released}</p></> : <></>}
 
                             {room.critMovie.Rated ? <> <h4>Rated</h4><p>{room.critMovie.Rated}</p></> : <></>}
+                            </div>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            </div>
 
             <h4>Rating</h4>
             <h4 className='secondary'>{castVote}</h4>
@@ -88,10 +92,21 @@ function CastVote({ socket, room, setStage, setNotification }){
                 value={castVote} 
                 onChange={handleCastVote} 
             />
-            <button onClick={() => cast()}>
+            <div style={{width: '100%', marginTop: '-30px'}}>
+            <center><button style={{marginTop: '0'}} onClick={() => cast()}>
                 Submit Rating
             </button>  
+            </center>
+            </div>
             
+            <h4>Plot</h4>
+            <div style={{textAlign: 'left'}}>
+            {room.critMovie.Plot ? 
+                <p>{room.critMovie.Plot}</p> 
+            : <p>N/A</p>}
+            </div>
+
+
             <table>
                 <tr>
                     <td style={{width: '50%'}}>
@@ -107,6 +122,7 @@ function CastVote({ socket, room, setStage, setNotification }){
                         : <p>N/A</p>}
                     </td>
                     <td>
+                        <div style={{textAlign: 'left'}}>
                         <h4>Cast</h4>
                         {room.critMovie.Cast ? 
                             <>
@@ -117,6 +133,7 @@ function CastVote({ socket, room, setStage, setNotification }){
                                 })}
                             </> 
                         : <p>N/A</p>}
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -133,12 +150,14 @@ function CastVote({ socket, room, setStage, setNotification }){
                         : <p>N/A</p>}
                     </td>
                     <td>
+                    <div style={{textAlign: 'left'}}>
                         <h4>Box Office</h4>
                         {room.critMovie.BoxOffice ? 
                             <>
                                 {room.critMovie.BoxOffice}
                             </> 
                         : <p>N/A</p>}
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -155,16 +174,13 @@ function CastVote({ socket, room, setStage, setNotification }){
                         : <p>N/A</p>}
                     </td>
                     <td>
+                    <div style={{textAlign: 'left'}}>
                         <h4>Production</h4>
                         {room.critMovie.Production ? <p>{room.critMovie.Production}</p> : <p>N/A</p>}
+                    </div>
                     </td>
                 </tr>
             </table>
-
-            <h4>Plot</h4>
-            {room.critMovie.Plot ? 
-                <p>{room.critMovie.Plot}</p> 
-            : <p>N/A</p>}
            
            <br /><br />
            

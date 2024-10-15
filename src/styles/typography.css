@@ -1,5 +1,5 @@
 h1, h2, h3, h4, h5, p, button, input, td {
-    font-family: 'Fragment Mono', monospace;
+    font-family: "Arsenal SC", sans-serif;
     font-weight: 400;
     font-style: normal;
 }
@@ -7,6 +7,9 @@ h1, h2, h3, h4, h5, p, button, input, td {
 h1, h2, h3, h4, h5, p {
     cursor: default;
     user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none; 
+    user-select: none; 
 }
 
 h1{
@@ -21,13 +24,13 @@ h1{
 
 h3{
     color: var(--gray);
+    margin: 0;
 }
 
 h4{
     display: block;
     color: var(--gray);
-    margin-bottom: 5px;
-    margin-top: 20px;
+    margin: 10px 0px 0px 0px;
 }
 
 p{

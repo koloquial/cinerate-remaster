@@ -6,6 +6,9 @@ function Splash({ socket, entry, setNotification, publicRooms }){
     const [joinRoomID, setJoinRoomID] = useState('');
     const [joinRoomPassword, setJoinRoomPassword] = useState('');
 
+    // game options
+    const [gameOption, setGameOption] = useState('start');
+
     // //localStorage name check
     // useEffect(() => {
     //     if(playerName === ''){
@@ -64,20 +67,31 @@ function Splash({ socket, entry, setNotification, publicRooms }){
     }
 
     return (
-        <div className='stage-container'>
-            
+        <div className='stage-container fade-in'>
                 <h1>
                     <span className='title'>cine</span>
                     <span className='title-alt'>Rate</span>
-                    <span className='text-small'>(v.1)</span>
+                    <span className='text-small'>(v.1.1)</span>
                 </h1>
                 <p>
                     Guess IMDB movie ratings.
                 </p>
            
-
+                {gameOption === 'start' && <>
+                <div className='action-container fade-in'>
+                    <div className='button-grid'>
+                        <button onClick={() => setGameOption('create game')}>Create Game</button>
+                        <button onClick={() => setGameOption('join game')}>Join Game</button>
+                    </div>
+                </div>
+                </>}
             
+            {gameOption === 'create game' && 
+            <div className='action-container fade-in'>
                 <h4>Create Game</h4>
+
+                <p>To create a private game, enter a password below before clicking <i>Create</i>. Leaving this field blank will create a public game.</p>
+
                 <input 
                     type='text' 
                     id='createRoomPassword'
@@ -85,9 +99,18 @@ function Splash({ socket, entry, setNotification, publicRooms }){
                     value={createRoomPassword} 
                     onChange={handler} 
                 />  
+
+                <div className='button-grid'>
+                <button onClick={() => setGameOption('start')}>Back</button>
                 <button onClick={createRoom}>Create</button>
+                </div>
+                </div>}
+
+               
             
+            {gameOption === 'join game' && <div className='action-container fade-in'>
                 <h4>Join Game</h4>
+                <p>Enter the Room ID (and password, if applicable) for the room you wish to join.</p>
                 <input 
                     type='text'
                     id='joinRoomID' 
@@ -102,9 +125,15 @@ function Splash({ socket, entry, setNotification, publicRooms }){
                     onChange={handler} 
                     placeholder='Room Password'  
                 />
-                <button onClick={joinRoom}>Join</button>
-            
+                <div className='button-grid'>
+                
+                <button onClick={() => setGameOption('start')}>Back</button>
+                <button onClick={joinRoom}>Join Game</button>
+               </div>
+
+                <div className='action-container fade-in' style={{marginTop: '20px'}}>
                 <h4>Public Games</h4>
+                <p>Click a public game to join.</p>
                 <table>
                     <tbody>
                         {Object.keys(publicRooms).map((id, index) => {
@@ -119,14 +148,14 @@ function Splash({ socket, entry, setNotification, publicRooms }){
                                     >
                                         <div>
                                         <p>
-                                            Host <br />
+                                            <b>Host: </b>
                                             {publicRooms[id].host.name}
                                         </p>
                                         </div>
                                        
                                         <div>
                                         <p>
-                                            Players<br />
+                                            <b>Players: </b>
                                             {publicRooms[id].players.length}
                                         </p>
                                         </div>
@@ -140,6 +169,11 @@ function Splash({ socket, entry, setNotification, publicRooms }){
                         })}
                 </tbody>
             </table>
+            
+                    </div>
+                </div>}
+            
+                
         </div>
     )
 }

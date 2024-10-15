@@ -18,12 +18,12 @@ const ChatBox = ({ socket, entry, room }) => {
 
     return (
         <>
-        <div className='chat' onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>
+        <div className={`chat ${isOpen ? 'open' : ''}`}  onClick={() => setIsOpen(true)}>
             <p className='gray'>Chat</p>
             {isOpen ? 
                 <>
                     <div id='chat-window' className='chat-window'>
-                        <div className='close-chat-window' onClick={() => setIsOpen(false)}>Close</div>
+                        
                         {room.chat.map(line => {
                             return (
                                 <p>
@@ -43,7 +43,11 @@ const ChatBox = ({ socket, entry, room }) => {
                         placeholder='Type message...' 
                         onChange={handleMessage} 
                     />
-                    <button onClick={sendMessage}>Send</button>
+                    <div className='button-grid'>
+                        <button onClick={(e) => {  e.stopPropagation(); setIsOpen(false)}}> Close</button>
+                        <button onClick={sendMessage}>Send</button>
+                    </div>
+                    
                 </> : <></>}
         </div>
         </>

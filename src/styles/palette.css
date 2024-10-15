@@ -1,7 +1,8 @@
 :root{
-    --primary: #a00303;
-    --secondary: #c60303;
+    --primary: #442626;
+    --secondary: #ae0000;
     --black: #1f1f1f;
     --white: #aaaaaa;
     --gray: #e7e7e7;
+    --blackAlt: #2f2f2f;
 }

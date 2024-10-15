@@ -40,20 +40,17 @@ const RoundOver = ({ socket, entry, room }) => {
         <div className='stage-container'>
             <h3>Round Over</h3>
             
-            <div style={{border: '1px solid red', borderRadius: '5px', padding: '10px', width: '100%'}}> 
-                <center>
-                    <h2 className='gray' style={{margin: '5px'}}>
-                        {room.critMovie.Title}
-                    </h2>
-                    <h1 style={{color: 'gold', margin: '5px'}}>
+            <div style={{textAlign: 'left', width: '100%'}}>
+            <h4>{room.critMovie.Title}</h4>
+                    <h1 style={{color: 'gold', marginTop: '5px', marginRight: '15px', display: 'inline-block'}}>
                         {room.critMovie.imdbRating}
                     </h1>
-                    <p style={{margin: '5px'}}>
+                    <p style={{display: 'inline-block'}}>
                         {room.critMovie.imdbVotes} votes
                     </p>
-                </center>
-            </div>
-            
+                   
+
+            <div style={{marginTop: '20px'}}>
             <h4>
                 {room.winners.length > 1 ? 
                 'Winners' : <></>}
@@ -64,6 +61,7 @@ const RoundOver = ({ socket, entry, room }) => {
                 {room.winners.length === 0 ? 
                 'No Winner' : <></>}
             </h4>
+            </div>
 
             {room.winners[0] !== null ?
                 <table>
@@ -88,6 +86,7 @@ const RoundOver = ({ socket, entry, room }) => {
                 </table> 
             : <></>}
             
+            <div style={{marginTop: '20px'}}>
             <h4>Guesses</h4>
             <table>
                 <tbody>
@@ -109,7 +108,9 @@ const RoundOver = ({ socket, entry, room }) => {
                     })}
                 </tbody>
             </table>
+            </div>
             
+            <div style={{marginTop: '20px'}}>
             <h4>Scoreboard</h4>
             <table>
                 <tbody>
@@ -127,6 +128,10 @@ const RoundOver = ({ socket, entry, room }) => {
                     })}
                 </tbody>
             </table>
+            </div>
+            </div>
+        
+            
 
             <div className='time-container'>
                 <p>{time}</p>

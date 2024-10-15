@@ -7,17 +7,17 @@ function AwaitPlayers({ socket, entry, room, setNotification }){
     const [playerName, setPlayerName] = useState('');
 
     const copyToClipboard = () => {
-        // get the text field
-        const copyText = document.getElementById('room-id');
+        // // get the text field
+        // const copyText = document.getElementById('room-id');
 
-        // select text field
-        copyText.select();
+        // // select text field
+        // copyText.select();
 
-        // for mobile devices
-        copyText.setSelectionRange(0, 99999); 
+        // // for mobile devices
+        // copyText.setSelectionRange(0, 99999); 
 
         // copy text inside field
-        navigator.clipboard.writeText(copyText.value);
+        navigator.clipboard.writeText(room.id);
 
         // set notification
         setNotification('Copied Room ID.');
@@ -64,31 +64,28 @@ function AwaitPlayers({ socket, entry, room, setNotification }){
         <div className='stage-container'>
             <h3>
                 Awaiting Critics
-            </h3>
-          
-            {room.host.id === socket.id ? 
-                <button onClick={startGame}>
-                    Start Game
-                </button>
-            : <></>}
+            </h3>           
 
-            <button onClick={leaveRoom}>
-                Leave Room
-            </button>
-            
-            <h4>
-                Room ID ({room.password ? 'Private' : 'Public'})
-            </h4>
-            <input 
-                type='text' 
-                id='room-id' 
-                value={room.id} 
-                readOnly 
-            />
-            <button onClick={copyToClipboard}>
-                Copy ID
-            </button>
-            
+            <div className='action-container'>
+
+
+            <h4>Critics ({room.players.length})</h4>
+               
+                <div className='block'>
+                    {room.players.map((player, index) => {
+                        return (
+                      
+                                <p style={{display: 'inline', marginRight: '5px'}} key={`player-${index}`}>
+                                    {player.name}
+                                </p>
+                           
+                        )
+                    })}
+                </div>
+                            </div>
+
+            <div className='action-container fade-in'>
+
             <h4>Name</h4>
                 <input 
                     type='text' 
@@ -97,23 +94,32 @@ function AwaitPlayers({ socket, entry, room, setNotification }){
                     value={playerName} 
                     onChange={handler} 
                 />
+                <center>
                 <button onClick={updatePlayerName}>Update</button>
+                </center>
+                
            
-                <h4>Critics ({room.players.length})</h4>
-               
-                <div className='block'>
-                    {room.players.map((player, index) => {
-                        return (
-                            <div key={`player-${index}`}>
-                                <p>
-                                    {player.name}
-                                </p>
-                            </div>
-                        )
-                    })}
+                
+
+                <div className='button-grid'>
+                    <button onClick={leaveRoom}>
+                        Leave Room
+                    </button>
+                    <button onClick={copyToClipboard}>
+                        Copy Room ID
+                    </button>
                 </div>
+
+                    <center>
+                {room.host.id === socket.id && 
+               <button onClick={startGame}>
+               Start Game
+           </button>}
+           </center>
+                
+            </div>
             
-                <ChatBox socket={socket} entry={entry} room={room} />
+                
         </div>
     )
 }

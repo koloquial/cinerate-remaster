@@ -1,16 +1,36 @@
 /* app: contains view container */
 .container{
     display: flex;
-    align-items: center;
-    flex-flow: column wrap;
+    flex-flow: column;
     justify-content: center;
+    align-items: center;
     margin: 0;
-    padding: 0;
+    padding: 10px;
+    width: 100%;
+    max-width: 296px;
 }
 
 /* app: contains stage container */
 .view-container{
-    width: 350px;
+    width: 100%;
+    padding-bottom: 100px;
+}
+
+.action-container{
+    width: 100%;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+
+.content-container{
+    margin-top: 10px;
+}
+
+.button-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
 }
 
 /* stages: contains all stage views*/
@@ -31,20 +51,20 @@
 /* contains notifications */
 .notification-bar{
     position: fixed;
-    bottom: 400px;
-    right: -80px;
-    background-color: var(--black);
+    bottom: 0px;
+    width: 100%;
+    background-color: var(--blackAlt);
     color: var(--white);
-    rotate: -90deg;
+    height: 25px;
+    padding-bottom: 5px;
 }
 
 .time-container{
     position: fixed;
     right: 5px;
-    bottom: 120px;
+    top: 0px;
     background-color: var(--black);
-    rotate: -90deg;
-    
+    font-size: small;
 }
 
 canvas {
@@ -57,29 +77,36 @@ canvas {
 /* Contains heading footer for stages */
 .chat{
     position: fixed;
-    bottom: 50px;
+    bottom: 30px;
     background-color: var(--primary);
     border: 1px solid var(--primary);
+    border-bottom: 0;
     height: 20px;
-    right: -11px;
+    right: 25px;
     transition: .5s;
     padding: 0;
-    padding-left: 5px;
+    padding-left: 0px;
     padding-bottom: 5px;
-    border-radius: 5px;
+    border-radius: 5px 5px 0px 0px;
     width: 45px;
-    rotate: -90deg;
 
+    p{ cursor: pointer;}
     &:hover{
-        padding: 10px 10px 0px 10px;
+        transition: .7s;
+        background-color: var(--secondary);
+    }
+}
+
+.chat.open{
+        padding: 10px 10px 10px 10px;
         transition: .5s;
-        height: 300px;
+        height: 380px;
         z-index: 100;
         rotate: 0deg;
         background-color: var(--black);
-        width: 300px;
-        right: 3px;
-    }
+        width: 262px;
+        bottom: 30px;
+        background-color: rgba(31, 31, 31);
 }
 
 .chat-window{
@@ -88,6 +115,8 @@ canvas {
     padding: 5px;
     font-size: small;
     overflow-y: scroll;
+    text-align: left;
+    background-color:  rgba(31, 31, 31);
 }
 
 /* AwaitingPlayers */
@@ -99,19 +128,23 @@ canvas {
 }
 
 .search-results{
+    margin-top: 20px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
-    gap: 20px 25px;
+    gap: 10px 10px;
+    width: 100%;
 }
 
 .movie-card{
-    width: 150px;
+    width: 140px;
     cursor: pointer;
     border: 1px solid var(--black);
+    transition: .5s;
 
     &:hover{
+        transition: .5s;
         border: 1px solid var(--secondary);
     }
 }
@@ -122,7 +155,7 @@ canvas {
 }
 
 .public-game{
-    width: 100%;
+    width: 92%;
     border: 1px solid var(--primary);
     cursor: pointer;
     border-radius: 5px;
@@ -132,7 +165,7 @@ canvas {
     margin-bottom: 5px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 5px;
+    padding: 2px 10px;
 
     &:hover{
         transition: .5s;
@@ -146,7 +179,7 @@ canvas {
     display: block;
 }
 
-.close-chat-window{
+/* .close-chat-window{
     display: block;
     position: absolute;
     top: -35px;
@@ -156,13 +189,13 @@ canvas {
     padding: 5px 10px 5px 10px;
     background-color: var(--primary);
     color: var(--gray);
-
     font-size: 20px;
     border-radius: 5px 5px 0px 0px;
     z-index: 1000000000;
     cursor: pointer;
 
     &:hover{
-        background-color: var(--secondary)
+        transition: .7s;
+        background-color: var(--secondary);
     }
-}
+} */

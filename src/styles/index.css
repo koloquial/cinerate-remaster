@@ -13,8 +13,8 @@ body{
     color: var(--white);
     margin: 0;
     padding: 0;
-    height: 100%;
     background-color: var(--black);
+    width: 100%;
 }
 
 img{
@@ -24,3 +24,16 @@ img{
 hr{
     border-top: 1px solid var(--secondary);
 }
+
+.fade-in {
+    animation: fadeIn 1s ease-in forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }

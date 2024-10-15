@@ -3,6 +3,7 @@ import io from 'socket.io-client';
 
 // components
 import Loading from './components/Loading';
+import ChatBox from './components/ChatBox';
 
 // stages
 import Splash from './stages/Splash';
@@ -138,11 +139,12 @@ const App = () => {
         </div>
       }
 
-      {/* <div className='notification-bar'>
+      <div className='notification-bar'>
         <p>
           {notification}
         </p>
-      </div> */}
+      </div>
+      {stage !== 'splash' && <ChatBox socket={socket} entry={entry} room={room} />}
     </div>
   )
 }

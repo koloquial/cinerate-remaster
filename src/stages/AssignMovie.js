@@ -8,6 +8,7 @@ import MovieCard from '../components/MovieCard';
 //functions
 import { searchMovieTitle } from '../functions/searchMovieTitle';
 import { getMovieInfo } from '../functions/getMovieInfo';
+import { getRandomMovie } from '../functions/getRandomMovie';
 
 const AssignMovie = ({ socket, entry, room, setNotification }) => {
     const [movieTitleInput, setMovieTitleInput] = useState('');
@@ -26,6 +27,12 @@ const AssignMovie = ({ socket, entry, room, setNotification }) => {
         searchMovieTitle(movieTitleInput)
         .then(res => setSearchResults(res.Search))
         .then(() => setLoading(false));
+    }
+
+    const handleRandom = () => {
+        let random = getRandomMovie();
+        console.log('random', random)
+        setMovieTitleInput(random);
     }
 
     const handleMovieID = () => {
@@ -74,10 +81,17 @@ const AssignMovie = ({ socket, entry, room, setNotification }) => {
                         value={movieTitleInput} 
                         onChange={handleMovieTitleInput} 
                     />
+                    <div className='action-container'>
+
+                   
+                    <div className='button-grid'>
+                    <button onClick={handleRandom}>Random</button>
                     <button onClick={handleSearch}>Search</button>
+                        </div>
+                        </div>
                 
                         {!loading && searchResults ? 
-                            <div className='search-results'>
+                            <div className='action-container search-results'>
                                 {searchResults.map((movie, index) => {
                                     if(movie.imdbID){
                                         return(
