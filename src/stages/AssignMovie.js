@@ -74,22 +74,20 @@ const AssignMovie = ({ socket, entry, room, setNotification }) => {
         <div className='stage-container'>
             {room.dealer.id === socket.id ? 
             <>
-                    <h3>Select Movie</h3>
-                    <input 
-                        type='text' 
-                        placeholder='Movie Title' 
-                        value={movieTitleInput} 
-                        onChange={handleMovieTitleInput} 
-                    />
-                    <div className='action-container'>
+                    <h2>Select Movie</h2>
 
-                   
-                    <div className='button-grid'>
-                    <button onClick={handleRandom}>Random</button>
-                    <button onClick={handleSearch}>Search</button>
-                        </div>
-                        </div>
-                
+                    <p className='form-label'>Movie Title</p>
+                    <div className='form-grid'>
+                        <input 
+                            type='text' 
+                            placeholder='Movie Title' 
+                            value={movieTitleInput} 
+                            onChange={handleMovieTitleInput} 
+                        />
+                        <button onClick={handleSearch}>Search</button>
+                        <button onClick={handleRandom}>Random Movie Title</button>
+                    </div>
+
                         {!loading && searchResults ? 
                             <div className='action-container search-results'>
                                 {searchResults.map((movie, index) => {
@@ -109,13 +107,14 @@ const AssignMovie = ({ socket, entry, room, setNotification }) => {
                             </div> 
                         : <></>}
             </> : 
-                <div className='full-width-container'>
-                    <h3>{room.dealer.name} is choosing a movie</h3>
-                    <br /><br /><br /><br />
-                    <h4>"{quote.text}"</h4>
-                    <br />
-                    <p><i>— {quote.author}</i></p>
-                
+                <div className='flex-container'>
+                    <h2>{room.dealer.name}</h2>
+                    <p>is choosing a movie.</p>
+                    
+                    <div className='quote-box'>
+                        <p className='quote'>{quote.text}</p>
+                        <p className='author'>— {quote.author}</p>
+                    </div>
                 </div>}
 
                 <div className='time-container'>

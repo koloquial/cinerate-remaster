@@ -100,32 +100,36 @@ function GameOver({ room, setStage }) {
 
     return (
         <div className="stage-container">
-            <div style={{ width: '100%' }}>
-                <center>
-                    <h3>Winner</h3>
-                    <h1 style={{ color: 'gold' }}>{winner.name}</h1>
-                    <br /><br />
-                </center>
-
-                <h4>Scoreboard</h4>
-                <table>
-                    <tbody>
-                        {room.players.map((player, index) => (
-                            <tr key={index}>
-                                <td><p>{player.name}</p></td>
-                                <td><p>{player.score}</p></td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-                <br /><br />
-                <button onClick={() => setStage('splash')}>Home</button>
-            </div>
+            <h1 style={{ color: 'gold' }}>{winner.name}</h1>
+            <h2>Wins!</h2>
+            <br />
+            <br />
+                  
+            <div className='alt-block'>
+                <h3>Scoreboard</h3>
+                    {room.players.map(player => {
+                        return (
+                            <div className='round-over-grid'>
+                                <div>
+                                <p>{player.name}</p>
+                                </div>
+                                <div>
+                                <p>{player.score}</p>
+                                </div>
+                            </div>
+                        )
+                    })}
+                    </div>
+                    <div className='inner-navigation'>
+                    <button onClick={() => setStage('splash')}>Home</button>
+                    </div>
+                
+            
             <div className="confetti-container">
                 {confettiPieces.map((style, index) => (
                     <div key={index} className="confetti" style={style}></div>
                 ))}
-            </div>
+         </div>
         </div>
     );
 }

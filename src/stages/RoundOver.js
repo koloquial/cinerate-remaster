@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import ChatBox from '../components/ChatBox';
 
 const RoundOver = ({ socket, entry, room }) => {
-    const [time, setTime] = useState(10);
+    const [time, setTime] = useState(8);
     const [gameOver, setGameOver] = useState(false);
 
     function nextRound(){
@@ -38,100 +38,91 @@ const RoundOver = ({ socket, entry, room }) => {
 
     return (
         <div className='stage-container'>
-            <h3>Round Over</h3>
-            
-            <div style={{textAlign: 'left', width: '100%'}}>
-            <h4>{room.critMovie.Title}</h4>
-                    <h1 style={{color: 'gold', marginTop: '5px', marginRight: '15px', display: 'inline-block'}}>
+            <h2>Round Over</h2>
+
+            <p>{room.critMovie.Title}</p>
+
+                    <h1 style={{color: 'gold', marginTop: '20px'}}>
                         {room.critMovie.imdbRating}
                     </h1>
-                    <p style={{display: 'inline-block'}}>
+                    <p>
                         {room.critMovie.imdbVotes} votes
                     </p>
                    
 
-            <div style={{marginTop: '20px'}}>
-            <h4>
-                {room.winners.length > 1 ? 
-                'Winners' : <></>}
+                    <div className='alt-block'>
+                    <h3>
+                        {room.winners.length > 1 ? 
+                        'Winners' : <></>}
 
-                {room.winners.length === 1 ? 
-                'Winner' : <></>}
+                        {room.winners.length === 1 ? 
+                        'Winner' : <></>}
 
-                {room.winners.length === 0 ? 
-                'No Winner' : <></>}
-            </h4>
-            </div>
+                        {room.winners.length === 0 ? 
+                        'No Winner' : <></>}
+                    </h3>
+           
 
-            {room.winners[0] !== null ?
-                <table>
-                    <tbody>
+            {room.winners[0] !== null &&
+            <>
                         {room.winners.map(winner => {
                             return (
-                                <tr>
-                                    <td>
+                                <div className='round-over-grid'>
+                                    <div>
                                         <p>
                                             {winner.user.name}
                                         </p>
-                                    </td>
-                                    <td>
+                                    </div>
+                                    <div>
                                         <p>
                                             {winner.vote}
                                         </p>
-                                    </td>
-                                </tr>
+                                    </div>
+                                </div>
                             )
                         })}
-                    </tbody>
-                </table> 
-            : <></>}
+                        </>}
+                        </div>
+                        
             
-            <div style={{marginTop: '20px'}}>
-            <h4>Guesses</h4>
-            <table>
-                <tbody>
+                        <div className='alt-block'>
+            <h3>Guesses</h3>
+
                     {room.guesses.map(guess => {
                         return (
-                            <tr>
-                                <td>
-                                    <p>
+                            <div className='round-over-grid'>
+                                <div>
+                                <p>
                                         {guess.user.name}
                                     </p>
-                                </td>
-                                <td>
-                                    <p>
+                                </div>
+                                <div>
+                                <p>
                                         {guess.vote}
                                     </p>
-                                </td>
-                            </tr>
+                                </div>
+                                </div>
+                               
                         )
                     })}
-                </tbody>
-            </table>
             </div>
+         
             
-            <div style={{marginTop: '20px'}}>
-            <h4>Scoreboard</h4>
-            <table>
-                <tbody>
+            <div className='alt-block'>
+            <h3>Scoreboard</h3>
                     {room.players.map(player => {
                         return (
-                            <tr>
-                                <td>
-                                    <p>{player.name}</p>
-                                </td>
-                                <td>
-                                    <p>{player.score}</p>
-                                </td>
-                            </tr>
+                            <div className='round-over-grid'>
+                                <div>
+                                <p>{player.name}</p>
+                                </div>
+                                <div>
+                                <p>{player.score}</p>
+                                </div>
+                            </div>
                         )
                     })}
-                </tbody>
-            </table>
-            </div>
-            </div>
-        
-            
+                    </div>
 
             <div className='time-container'>
                 <p>{time}</p>

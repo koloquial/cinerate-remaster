@@ -12,7 +12,7 @@ const AwaitGuesses = ({ socket, entry, room }) => {
 
     return (
         <div className='stage-container'>
-            <h3>Waiting for Votes</h3>
+            <h2>Waiting for Votes</h2>
             
             <div className='time-container'>
                 <p>{time}</p>

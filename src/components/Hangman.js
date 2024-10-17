@@ -25,9 +25,6 @@ const Hangman = () => {
             }
             return letter; // Keep special characters and spaces as they are
         });
-        
-
-        console.log('secret', sec);
 
         setSecret(sec);
         setTarget(movie);
@@ -43,7 +40,7 @@ const Hangman = () => {
 
     useEffect(() => {
         initializeGame();
-    }, []); // Run only on component mount
+    }, []); 
 
     const handleLetter = (letter) => {
         if (!active) return;
@@ -77,9 +74,9 @@ const Hangman = () => {
                     <span key={index} style={{
                         height: '10px',
                         width: '10px',
-                        color: 'var(--secondary)',
+                        color: 'var(--primary)',
                         backgroundColor: 'transparent',
-                        border: '1px solid var(--secondary)',
+                        border: '1px solid var(--primary)',
                         fontSize: 'xx-small',
                         padding: '2px',
                         display: 'inline-block',
@@ -92,12 +89,12 @@ const Hangman = () => {
 
             <div>
                 {active && secret.map((letter, index) => (
-                    <span key={index} style={{ marginRight: '10px', marginBottom: '5px' }}>{letter}</span>
+                    <span key={index} style={{ marginRight: '10px', marginBottom: '10px', color: 'var(--gray)' }}>{letter}</span>
                 ))}
             </div>
 
             {!active && (
-                <div style={{ color: misses.length >= 7 ? 'var(--secondary)' : 'gold' }}>
+                <div style={{ color: misses.length >= 7 ? 'var(--primary)' : 'gold' }}>
                     {target.join('')}
                 </div>
             )}
@@ -121,10 +118,9 @@ const Hangman = () => {
                 </div>
             )}
 
-            {active && <button style={{marginTop: '70px'}} onClick={(e) => {  e.stopPropagation(); setIsOpen(false)}}> Close</button>}
-                        
-            {!active && <div className='action-container'> <div className='button-grid'> <button onClick={(e) => {  e.stopPropagation(); setIsOpen(false)}}> Close</button><button onClick={restartHangman}>Again?</button></div></div>}
-        
+                {!active && <div className='action-container'><button onClick={restartHangman}>Again?</button></div>}
+
+                <div className='inner-navigation'><button onClick={(e) => {  e.stopPropagation(); setIsOpen(false)}}>Close</button></div>
             </>}
            </div>
     );

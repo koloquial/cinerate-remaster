@@ -43,16 +43,15 @@ function AwaitPlayers({ socket, entry, room, setNotification }){
 
             <div className='action-container'>
                 <p><span className='inline-label'>Critics: </span>{room.players.length}</p>
-               
-                <div className='block'>
+                <ul>
                     {room.players.map((player, index) => {
                         return (
-                                <p style={{display: 'inline', marginRight: '5px'}} key={`player-${index}`}>
+                                <li key={`player-${index}`}>
                                     {player.name}
-                                </p>
+                                </li>
                         )
                     })}
-                </div>
+                </ul>
             </div>
 
             <div className='action-container fade-in'>

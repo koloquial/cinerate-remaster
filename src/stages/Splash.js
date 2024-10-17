@@ -126,7 +126,7 @@ function Splash({ socket, entry, setNotification, publicRooms, usersOnline }){
                         value={createRoomPassword} 
                         onChange={handler} 
                     />  
-                    <button onClick={createRoom}>Create Game</button>
+                    <button onClick={createRoom}>Create</button>
                     </div>
                     </div>
                     
@@ -153,7 +153,7 @@ function Splash({ socket, entry, setNotification, publicRooms, usersOnline }){
                         onChange={handler} 
                         placeholder='Room Password'  
                     />
-                    <button onClick={joinRoom}>Join Game</button>
+                    <button onClick={joinRoom}>Join</button>
                   
                     <div className='inner-navigation'>
                         <button onClick={() => setGameOption('start')}>Back</button>

@@ -1,4 +1,4 @@
-h1, h2, h3, h4, h5, p, button, input, td {
+h1, h2, h3, h4, h5, p, button, input, td, li, .quote {
     font-family: Verdana, Arial, sans-serif;
 }
 
@@ -31,9 +31,53 @@ h2{
     font-weight: 500;
 }
 
-p{
+p, li, .quote{
     color: var(--gray);
 }
+
+ul{
+    columns: 2;
+    column-gap: 10px;
+    list-style-position: inside; 
+    margin: 0;
+    padding: 0;
+}
+
+.quote-box{
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 70%;
+
+    &:before{
+        content: '“'; 
+        font-size: 100px;
+        color: var(--white);
+        position: absolute;
+        top: 0px;
+        left: -50px; 
+        font-family: "Times New Roman", Times, serif;
+    }
+
+    &:after{
+        content: '”'; 
+        color: var(--white);
+        position: absolute;
+        bottom: -15px;
+        right: -50px; 
+        font-family: "Times New Roman", Times, serif;
+        font-size: 100px;
+    }
+}
+
+
+.quote{
+    display: block;
+    text-align: justify;
+    font-style: italic;
+    color: var(--gray);
+}
+
 
 .label, .inline-label, .form-label{
     font-weight: 500;

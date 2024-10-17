@@ -3,11 +3,8 @@ import noposter from '../images/no-poster.png';
 
 function CastVote({ socket, room, setStage, setNotification }){
     const [castVote, setCastVote] = useState(0.0);
-    const [time, setTime] = useState(30);
+    const [time, setTime] = useState(3000);
     const [poster, setPoster] = useState('');
-
-    console.log('socket', socket);
-    console.log('room', room);
 
     const handleCastVote = (event) =>{
         setCastVote(event.target.value);
@@ -55,38 +52,27 @@ function CastVote({ socket, room, setStage, setNotification }){
 
     return (
         <div className='stage-container'>
-            <h3>Cast Vote</h3>
-           <div className='content-container'>
-            <table>
-                <tbody>
-                    <tr>
-                        <td style={{width: '50%'}}>
-                            <img 
-                                src={poster} 
-                                style={{
-                                    maxWidth: '240px', 
-                                    maxHeight: '360px',
-                                    marginRight: '15px',
-                                    marginBottom: '10px'
-                                }} 
-                            />
-                        </td>
-                        <td>
-                            <div style={{textAlign: 'left'}}>
-                            <h3>{room.critMovie.Title}</h3>
-                            
-                            {room.critMovie.Released ? <> <h4>Released</h4><p>{room.critMovie.Released}</p></> : <></>}
-
-                            {room.critMovie.Rated ? <> <h4>Rated</h4><p>{room.critMovie.Rated}</p></> : <></>}
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <h2>Cast Vote</h2>
+            <div className='content-container'>
+                <img 
+                    src={poster} 
+                    style={{
+                        maxWidth: '240px', 
+                        maxHeight: '360px',
+                        marginRight: '15px',
+                        marginBottom: '10px'
+                    }} 
+                />
+                        
+                <div>
+                    <h3>{room.critMovie.Title}</h3>
+                    {room.critMovie.Released ? <> <p className='label'>Released</p><p>{room.critMovie.Released}</p></> : <></>}
+                    {room.critMovie.Rated ? <> <p className='label'>Rated</p><p>{room.critMovie.Rated}</p></> : <></>}
+                </div>
             </div>
 
-            <h4>Rating</h4>
-            <h4 className='secondary'>{castVote}</h4>
+            <p><span className='inline-label'>Rating: </span>{castVote}</p>
+            
             <input 
                 type='range' 
                 min='0' 
@@ -95,77 +81,54 @@ function CastVote({ socket, room, setStage, setNotification }){
                 value={castVote} 
                 onChange={handleCastVote} 
             />
-            <div style={{width: '100%', marginTop: '-20px'}}>
-            <center><button style={{marginTop: '0'}} onClick={() => cast()}>
+
+            <button onClick={() => cast()}>
                 Submit Rating
             </button>  
-            </center>
-            </div>
-            
-            <h4>Plot</h4>
-            <div style={{textAlign: 'left'}}>
+           
+            <p className='label'>Plot</p>
+           
             {room.critMovie.Plot ? 
                 <p>{room.critMovie.Plot}</p> 
             : <p>N/A</p>}
+           
+           <div className='details-grid'>
+            <div>
+                <p className='label'>Director</p>
+                {room.critMovie.Director ? 
+                    <>
+                        {room.critMovie.Director.split(',').map((line, index) => {
+                            return (
+                                <p key={`${line}-${index}`}>{line}</p>
+                            )
+                        })}
+                    </> 
+                : <p>N/A</p>}
+
+<p className='label'>Cast</p>
+                {room.critMovie.Cast ? 
+                    <>
+                        {room.critMovie.Cast.split(',').map((line, index) => {
+                            return (
+                                <p key={`${line}-${index}`}>{line}</p>
+                            )
+                        })}
+                    </> 
+                : <p>N/A</p>}
+                
+                <p className='label'>Box Office</p>
+                {room.critMovie.BoxOffice ? 
+                    <p>
+                        {room.critMovie.BoxOffice}
+                    </p> 
+                : <p>N/A</p>}
+
+                <p className='label'>Production</p>
+                {room.critMovie.Production ? <p>{room.critMovie.Production}</p> : <p>N/A</p>}
             </div>
+            <div>
 
-
-            <table>
-                <tr>
-                    <td style={{width: '50%'}}>
-                        <h4>Director</h4>
-                        {room.critMovie.Director ? 
-                            <>
-                                {room.critMovie.Director.split(',').map((line, index) => {
-                                    return (
-                                        <p key={`${line}-${index}`}>{line}</p>
-                                    )
-                                })}
-                            </> 
-                        : <p>N/A</p>}
-                    </td>
-                    <td>
-                        <div style={{textAlign: 'left'}}>
-                        <h4>Cast</h4>
-                        {room.critMovie.Cast ? 
-                            <>
-                                {room.critMovie.Cast.split(',').map((line, index) => {
-                                    return (
-                                        <p key={`${line}-${index}`}>{line}</p>
-                                    )
-                                })}
-                            </> 
-                        : <p>N/A</p>}
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td style={{width: '50%'}}>
-                        <h4>Awards</h4>
-                        {room.critMovie.Awards ? 
-                            <>
-                                {room.critMovie.Awards.split(',').map((line, index) => {
-                                    return (
-                                        <p key={`${line}-${index}`}>{line}</p>
-                                    )
-                                })}
-                            </> 
-                        : <p>N/A</p>}
-                    </td>
-                    <td>
-                    <div style={{textAlign: 'left'}}>
-                        <h4>Box Office</h4>
-                        {room.critMovie.BoxOffice ? 
-                            <>
-                                {room.critMovie.BoxOffice}
-                            </> 
-                        : <p>N/A</p>}
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td style={{width: '50%'}}>
-                        <h4>Writer</h4>
+            <p className='label'>Writer</p>
                         {room.critMovie.Writer ? 
                             <>
                                 {room.critMovie.Writer.split(',').map((line, index) => {
@@ -175,19 +138,23 @@ function CastVote({ socket, room, setStage, setNotification }){
                                 })}
                             </> 
                         : <p>N/A</p>}
-                    </td>
-                    <td>
-                    <div style={{textAlign: 'left'}}>
-                        <h4>Production</h4>
-                        {room.critMovie.Production ? <p>{room.critMovie.Production}</p> : <p>N/A</p>}
+
+               
+
+                        <p className='label'>Awards</p>
+                        {room.critMovie.Awards ? 
+                            <>
+                                {room.critMovie.Awards.split(',').map((line, index) => {
+                                    return (
+                                        <p key={`${line}-${index}`}>{line}</p>
+                                    )
+                                })}
+                            </> 
+                        : <p>N/A</p>}
                     </div>
-                    </td>
-                </tr>
-            </table>
-           
-           <br /><br />
-           
-           <div className='time-container'>
+                </div>
+          
+                <div className='time-container'>
                 <p>{time}</p>
             </div>
         </div>
