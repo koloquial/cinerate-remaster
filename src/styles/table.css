@@ -2,19 +2,3 @@ table{
     width: 100%;
     border-collapse: collapse;
 }
-
-tr{
-    width: 100%;
-}
-
-td{
-    vertical-align: top;
-    padding-right: 10px;
-    margin: 0;
-}
-
-
-
-td:last-child{
-    text-align: right;
-}

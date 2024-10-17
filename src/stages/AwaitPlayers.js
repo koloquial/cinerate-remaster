@@ -4,8 +4,7 @@ import { useState } from 'react';
 import ChatBox from '../components/ChatBox';
 
 function AwaitPlayers({ socket, entry, room, setNotification }){
-    const [playerName, setPlayerName] = useState('');
-
+  
     const copyToClipboard = () => {
         // // get the text field
         // const copyText = document.getElementById('room-id');
@@ -38,87 +37,36 @@ function AwaitPlayers({ socket, entry, room, setNotification }){
         }
     }
 
-        //update player name
-        const updatePlayerName = () => {
-            if(playerName && playerName.length <= 10){
-                socket.emit('update_name', {
-                    id: socket.id, 
-                    name: playerName,
-                    room: room
-                });
-                
-                setPlayerName('');
-            }else{
-                setNotification('Player name must be between 1 and 10 characters.');
-            }
-        }
-
-            //onchange handlers
-    const handler = (event) => {
-        setPlayerName(event.target.value); 
-    }
-    
-    
     return (
         <div className='stage-container'>
-            <h3>
-                Awaiting Critics
-            </h3>           
+            <h2>Awaiting Critics</h2>           
 
             <div className='action-container'>
-
-
-            <h4>Critics ({room.players.length})</h4>
+                <p><span className='inline-label'>Critics: </span>{room.players.length}</p>
                
                 <div className='block'>
                     {room.players.map((player, index) => {
                         return (
-                      
                                 <p style={{display: 'inline', marginRight: '5px'}} key={`player-${index}`}>
                                     {player.name}
                                 </p>
-                           
                         )
                     })}
                 </div>
-                            </div>
+            </div>
 
             <div className='action-container fade-in'>
-
-            <h4>Name</h4>
-                <input 
-                    type='text' 
-                    id='playerName'
-                    placeholder={entry.name}
-                    value={playerName} 
-                    onChange={handler} 
-                />
-                <center>
-                <button onClick={updatePlayerName}>Update</button>
-                </center>
-                
-           
-                
-
-                <div className='button-grid'>
-                    <button onClick={leaveRoom}>
-                        Leave Room
-                    </button>
-                    <button onClick={copyToClipboard}>
-                        Copy Room ID
-                    </button>
-                </div>
-
-                    <center>
+                <button onClick={leaveRoom}>
+                    Leave Room
+                </button>
+                <button onClick={copyToClipboard}>
+                    Copy Room ID
+                </button>
                 {room.host.id === socket.id && 
-               <button onClick={startGame}>
-               Start Game
-           </button>}
-           </center>
-                
+                    <button onClick={startGame}>
+                        Start Game
+                    </button>}
             </div>
-            
-                
         </div>
     )
 }

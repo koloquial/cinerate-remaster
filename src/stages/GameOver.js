@@ -99,7 +99,7 @@ function GameOver({ room, setStage }) {
     }, [room]);
 
     return (
-        <div className="view-container">
+        <div className="stage-container">
             <div style={{ width: '100%' }}>
                 <center>
                     <h3>Winner</h3>

@@ -1,7 +1,5 @@
 h1, h2, h3, h4, h5, p, button, input, td {
-    font-family: "Arsenal SC", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+    font-family: Verdana, Arial, sans-serif;
 }
 
 h1, h2, h3, h4, h5, p {
@@ -12,60 +10,50 @@ h1, h2, h3, h4, h5, p {
     user-select: none; 
 }
 
+h1, h2, h3, h4{
+    color: var(--white);
+    font-weight: 500;
+}
+
 h1{
     margin: 0;
     padding: 0;
 }
 
-.text-small{
-    font-size: 10px;
-    margin-left: 10px;
-}
-
-h3{
-    color: var(--gray);
-    margin: 0;
-}
-
-h4{
-    display: block;
-    color: var(--gray);
-    margin: 10px 0px 0px 0px;
-}
-
-p{
-    color: var(--white);
-    margin-top: 5px;
-    margin-bottom: 5px;
+h2{
+    margin:0;
+    padding: 0;
 }
 
 .title{
     font-family: 'Monoton', sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    margin: 0;
-    padding: 0;
-    color: var(--secondary);
-}
-
-.title-alt{
-    font-weight: 400;
-    font-style: normal;
-    color: var(--gray)
-}
-
-.primary{
     color: var(--primary);
+    font-weight: 500;
 }
 
-.secondary{
-    color: var(--secondary);
-}
-
-.gray{
+p{
     color: var(--gray);
 }
 
-.white{
+.label, .inline-label, .form-label{
+    font-weight: 500;
     color: var(--white);
+}
+
+.form-label{
+    margin-bottom: -10px;
+    margin-left: 0px;
+}
+
+.inline-label{
+    display: inline;
+}
+
+.text-small{
+    color: var(--gray);
+    font-size: small;
+}
+
+.subtitle{
+    margin-top: 0;
 }

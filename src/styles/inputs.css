@@ -1,29 +1,28 @@
 input[type='text']{
     background-color: var(--black);
     color: var(--white);
-    border: 1px solid var(--primary);
-    padding: 5px;
-    margin-top: 15px;
-    margin-bottom: 5px;
-    font-size: 16px;
+    border: 1px solid var(--secondary);
+    padding: 5px 10px 5px 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     display: block;
     border-radius: 10px;
-    width: 96%;
     transition: .7s;
+    width: auto;
 
     &:hover{
         transition: .7s;
-        border: 1px solid var(--secondary);
+        border: 1px solid var(--primary);
     }
 
     &:active{
         transition: .7s;
-        border: 1px solid var(--secondary);
+        border: 1px solid var(--primary);
     }
 
     &:focus{
         transition: .7s;
         outline: none;
-        border: 1px solid var(--secondary);
+        border: 1px solid var(--primary);
     }
 }

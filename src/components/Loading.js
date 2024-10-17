@@ -30,8 +30,8 @@ const Loading = () => {
                         <p style={{fontSize: 'x-small', textAlign: 'left'}}>
                             Thank you for your patience.
                         </p>
-                        <p>
-                            While you wait - enjoy a few games of movie hangman.
+                        <p style={{fontSize: 'x-small', textAlign: 'left'}}>
+                            Seriously it might take a full minute.
                         </p>
                         <Hangman />
                     </div>

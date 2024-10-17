@@ -87,10 +87,7 @@ const App = () => {
   return (
     <div className='container'>
       {loading ? <Loading /> : 
-        <div className='view-container'>
-
-          {console.log('entry', entry)}
-
+        <div className='stage-container'>
           {stage === 'splash' ?
               <Splash
               usersOnline={usersOnline} 

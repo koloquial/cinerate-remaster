@@ -69,7 +69,7 @@ const Hangman = () => {
 
     return (
         <div className={`hangman ${isOpen ? 'open' : ''}`}  onClick={() => setIsOpen(true)}> 
-            <p>{isOpen ? 'Guess the Movie' : '?'}</p>
+            <p>{isOpen ? 'Guess the Movie' : 'Guess'}</p>
 
             {isOpen && <>
                 <div>
